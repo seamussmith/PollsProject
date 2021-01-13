@@ -42,6 +42,12 @@ footer {
     }
 }
 
+.content__title {
+    background-color: var(--layer-4);
+    text-align: center;
+    padding: 20px 50px;
+}
+
 .content__header {
     background-color: var(--layer-3);
     padding: 20px 50px;
