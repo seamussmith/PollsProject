@@ -58,7 +58,7 @@
     outline: 0;
     border-radius: 10px;
     background-color: var(--button-color-primary);
-    color: var(--text-color-inverse);
+    /* color: var(--text-color-inverse); */
 }
 
 .poll__title {
