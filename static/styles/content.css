@@ -21,15 +21,19 @@ footer {
 }
 
 .content {
+    --content-border-radius: 10px;
     margin: 100px 300px;
     min-height: 100vh;
-    border: solid red 1px;
     display: block;
+    box-shadow: 0 0 5px var(--shadow-color);
+    border-radius: var(--content-border-radius);
     background-color: var(--layer-1);
 }
 
 .title-head-container {
-
+    background-color: var(--layer-3);
+    padding: 20px 50px;
+    border-radius: var(--content-border-radius);
 }
 
 .title-container {
