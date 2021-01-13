@@ -17,11 +17,11 @@
     {% for i in 0|seq:20 %}
         <div class="poll" style="animation-delay: {{ forloop.counter|mul:0.05 }}s;">
             <h3 class="poll__title">GoodPoll</h3>
-            <form action="sdfdsffsd" method="POST" class="poll__form" onsubmit="return PollVote(this)">
+            <form action="sdfdsffsd" method="POST" class="poll__form" onload="$(this).submit(PollVote)">
                 {% csrf_token %}
-                <button type="submit" class="poll__choice">Choice 1</button>
-                <button type="submit" class="poll__choice">Choice 2</button>
-                <button type="submit" class="poll__choice">Choice 3</button>
+                <input type="submit" name="choice" value="Choice 1" class="poll__choice" />
+                <input type="submit" name="choice" value="Choice 2" class="poll__choice" />
+                <input type="submit" name="choice" value="Choice 3" class="poll__choice" />
                 <input type="hidden" name="uuid" value="{{forloop.counter}}">
             </form>
         </div>
