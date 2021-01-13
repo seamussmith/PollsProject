@@ -16,7 +16,7 @@
     <div class="poll-container">
     {% for i in 0|seq:20 %}
         <div class="poll" style="animation-delay: {{ forloop.counter|mul:0.05 }}s;">
-            <h3 class="poll__title">GoodPoll</h3>
+            <h3 class="poll__title">Awesome Poll #{{ forloop.counter }}</h3>
             <form action="{% url "pollapp:index" %}" method="POST" class="poll__form">
                 {% csrf_token %}
                 <button type="button" name="choice" value="Choice 1" class="poll__choice" onclick="SendVote(this)">Choice 1</button>
