@@ -6,14 +6,14 @@
     {% comment %} TODO: Add poll functionality {% endcomment %}
 {% endblock head %}
 {% block body %}
+    <div class="title-head-container">
+        <h1>Ongoing Polls</h1>
+    </div>
+    <div class="title-container">
+
+    </div>
     <div class="poll-container">
     {% for i in 1|seq:10 %}
-        <div class="title-head-container">
-
-        </div>
-        <div class="title-container">
-
-        </div>
         <div class="poll" style="animation-delay: {{ forloop.counter|mul:0.05 }}s;">
             <h3 class="poll__title">GoodPoll</h3>
             <form action="sdfdsffsd" method="POST" class="poll__form">
