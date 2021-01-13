@@ -21,5 +21,16 @@ footer {
 }
 
 .content {
+    margin: 100px 300px;
+    min-height: 100vh;
+    border: solid red 1px;
+    display: block;
+}
+
+.title-head-container {
     
+}
+
+.title-container {
+
 }
