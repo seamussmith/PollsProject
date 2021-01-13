@@ -27,6 +27,9 @@ SECRET_KEY = os.environ.get("SECURITY_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "0.0.0.0",
+    "localhost",
     "pollsproject.seamussmith.repl.co",
     "bab8ffea-3772-476b-adcf-0b088ddbadaa.id.repl.co",
 ]
