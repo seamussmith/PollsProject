@@ -10,3 +10,6 @@ db.sqlite3
 #repl.it
 .replit
 .env
+
+#powershell scripts
+*.ps1
