@@ -2,6 +2,7 @@
 #python
 *.pyc
 __pycache__/
+.pytest_cache
 
 #django
 db.sqlite3
