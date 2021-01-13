@@ -11,6 +11,7 @@ main {
     overflow: hidden;
     display: block;
     position: relative;
+    padding-bottom: 124px; /* Height of footer */
 }
 
 footer {
