@@ -7,7 +7,7 @@
 }
 
 .poll {
-    background-color: var(--layer-3);
+    background-color: var(--layer-2);
     transform: scale(0);
     border-radius: 20px;
     /* border: 1px solid red; */
