@@ -25,10 +25,11 @@ footer {
     min-height: 100vh;
     border: solid red 1px;
     display: block;
+    background-color: var(--layer-1);
 }
 
 .title-head-container {
-    
+
 }
 
 .title-container {
