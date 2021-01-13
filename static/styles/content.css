@@ -30,6 +30,13 @@ footer {
     background-color: var(--layer-1);
 }
 
+@media (max-width: 720px)
+{
+    .content {
+        margin: 0 300px;
+    }
+}
+
 .title-head-container {
     background-color: var(--layer-3);
     padding: 20px 50px;
