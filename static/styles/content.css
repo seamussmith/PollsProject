@@ -21,7 +21,7 @@ footer {
 }
 
 .content {
-    margin: 100px 300px;
+    margin: 50px 300px;
     min-height: 100vh;
     display: block;
     box-shadow: 0 0 5px var(--shadow-color);
@@ -31,7 +31,7 @@ footer {
 @media (max-width: 1500px)
 {
     .content {
-        margin: 100px 50px;
+        margin: 50px 50px;
     }
 }
 
@@ -42,11 +42,11 @@ footer {
     }
 }
 
-.title-head-container {
+.content__header {
     background-color: var(--layer-3);
     padding: 20px 50px;
 }
 
-.title-container {
+.content__subheader {
 
 }
