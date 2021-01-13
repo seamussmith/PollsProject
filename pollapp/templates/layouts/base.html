@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} Hmm? Slower loading times? I just wanna manage my CSS in a way that keep me sane! {% endcomment %}
+    <link rel="stylesheet" href="{% static "styles/base-style.css" %}">
+    <link rel="stylesheet" href="{% static "styles/animations.css" %}">
+    <link rel="stylesheet" href="{% static "styles/animated-underline.css" %}">
+    <link rel="stylesheet" href="{% static "styles/navbar.css" %}">
+    <link rel="stylesheet" href="{% static "styles/footer.css" %}">
+    <link rel="stylesheet" href="{% static "styles/content.css" %}">
+    <link rel="stylesheet" href="{% static "styles/poll-logo.css" %}">
+    {% block favicon %}
+    {% comment %} TODO: Make favicon {% endcomment %}
+    {% endblock favicon %}
+    {% block head %}
+    {% endblock head %}
+</head>
+<body class="dark">
+    <main>
+        {% include "components/navbar.html" %}
+        <content>
+        {% block body %}
+        {% endblock body %}
+        </content>
+        {% include "components/footer.html" %}
+    </main>
+</body>
+</html>

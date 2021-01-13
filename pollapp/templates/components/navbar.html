@@ -1,0 +1,22 @@
+{% load static %}
+<header>
+    <nav class="navbar">
+        <ul class="navbar__ulist">
+            <li class="navbar__ulist-item--title navbar__ulist-item">
+                <a class="navbar__title" href="{% url 'pollapp:index' %}"><img class="poll-logo" src="{% static 'pollapp.png' %}" alt=""></a>
+            </li>
+            <li class="navbar__ulist-item">
+                <a class="navbar__link" href="{% url 'pollapp:about' %}"><i class="far fa-address-card --force-inherit"></i> about</a>
+            </li>
+            <li class="navbar__ulist-item">
+                <a class="navbar__link" href="{% url 'pollapp:contact' %}"><i class="fas fa-phone-alt --force-inherit"></i> contact</a>
+            </li>
+            <li class="navbar__ulist-item">
+                <a class="navbar__link" href="{% url 'pollapp:submit-poll' %}"><i class="fas fa-poll --force-inherit"></i> submit a poll</a>
+            </li>
+            <li class="navbar__ulist-item">
+                <a class="navbar__link" href="{% url 'pollapp:settings' %}"><i class="fas fa-user-cog --force-inherit"></i> settings</a>
+            </li>
+        </ul>
+    </nav>
+</header>

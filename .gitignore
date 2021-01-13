@@ -1,0 +1,12 @@
+
+#python
+*.pyc
+__pycache__/
+
+#django
+db.sqlite3
+*.log
+
+#repl.it
+.replit
+.env

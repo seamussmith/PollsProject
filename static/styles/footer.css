@@ -1,0 +1,19 @@
+
+.footer {
+    bottom: 0;
+    padding: 10px 0;
+    background-color: var(--layer-1);
+    border-top: solid 2px var(--layer-3);
+    width: 100%;
+    min-height: 120px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+  
+.footer__content {
+    padding-left: 20px;
+    margin: 5px 0;
+    flex-grow: 2;
+}

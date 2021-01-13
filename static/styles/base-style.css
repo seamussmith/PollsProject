@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+:root {
+    /* theme variables */
+    --PLACEHOLD: magenta;
+    --layer-0: none;
+    --layer-1: none;
+    --layer-2: none;
+    --layer-3: none;
+    --layer-4: none;
+    --shadow-color: none;
+    --link-color: none;
+    --link-hover: none;
+    --text-color: none;
+    --text-color-inverse: none;
+    --button-color-primary: none;
+}
+
+.dark {
+    /* theme settings */
+    --layer-0: rgb(15, 15, 15);
+    --layer-1: rgb(22, 22, 22);
+    --layer-2: rgb(28, 28, 28);
+    --layer-3: rgb(43, 43, 43);
+    --layer-4: rgb(70, 70, 70);
+    --shadow-color: black;
+    --link-color: lightblue;
+    --link-hover: rgb(110, 186, 211);
+    --text-color: white;
+    --text-color-inverse: black;
+    --button-color-primary: rgb(32, 116, 211);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--layer-0);
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+.--force-inherit {
+    color: inherit;
+}
+
+button {
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    filter: brightness(0.70);
+    cursor: pointer;
+}
+
+button:active {
+    filter: brightness(0.60);
+}

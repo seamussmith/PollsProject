@@ -1,0 +1,135 @@
+
+.navbar {
+    background: var(--layer-1);
+    text-align: center;
+    border-bottom: solid var(--layer-3) 2px;
+    box-shadow: 0 1px 2px var(--shadow-color);
+    padding: 18px 0;
+}
+
+.navbar__title {
+    /* padding-left: 10px; */
+    /* font-size: 20pt; */
+    padding: 0;
+    margin: 0;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.navbar__ulist-item--title {
+    padding: 0 0px;
+    margin: 0;
+}
+
+.navbar__title:hover {
+    filter: brightness(80%);
+    color: var(--text-color);
+}
+
+.navbar__link {
+    position: relative;
+    color: var(--link-color);
+    font-size: 30px;
+    padding: 0 10px;
+    text-decoration: none;
+    transition: all 0.10s;
+}
+
+.navbar__ulist-item {
+    margin: 0 10px;
+}
+
+.navbar__link:hover {
+    color: var(--link-hover);
+}
+
+.navbar__link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border-bottom: solid var(--link-hover) 2px;
+    border-radius: 20px;
+    background-color: transparent;
+    transition: all 0.30s ease;
+    transform: scaleX(0);
+}
+
+.navbar__link:hover::before {
+    transform:scaleX(1);
+}
+
+/* .navbar__link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 0;
+    border-top: solid var(--link-color) 2px;
+    background-color: transparent;
+    transform: scaleX(0.50);
+}
+
+.navbar__link:hover::after {
+    border-color: var(--link-hover);
+} */
+
+.navbar__ulist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-flow: wrap row;
+}
+
+.navbar__hidebutton {
+    float: right;
+    margin: 5px 5px;
+    padding: 10px 15px;
+    font-size: 30px;
+    visibility: hidden;
+}
+    
+/* navbar modifiers */
+.navbar--minature .navbar__link {
+    padding: 0;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+.navbar--minature .navbar__link::after {
+    border: 0;
+}
+
+/* .navbar--minature .navbar__link::before {
+    border-color: var(--link-color);
+}
+
+.navbar--minature .navbar__link:hover::before {
+    border-color: var(--link-hover);
+} */
+
+.navbar--minature .navbar--ulist {
+    flex-flow: wrap row;
+}
+
+.navbar--minature .navbar__ulist-item {
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.navbar--minature {
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* 
+.navbar--left-justify .navbar__ulist {
+    justify-content: left;
+    align-items: left;
+} */

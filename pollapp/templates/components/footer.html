@@ -1,0 +1,28 @@
+<footer class="footer">
+    <p class="footer__content">
+        <i class="far fa-copyright"></i> copyright {% now "Y" %} lolololol
+    </p>
+    <p class="footer__content">
+        A <a class="--animated-underline" href="#">Seamus Smith</a> website.
+    </p>
+    <nav class="navbar navbar--minature footer__content">
+        <ul class="navbar__ulist">
+            <li class="navbar__ulist-item">
+                <a class="navbar__link" href="#">
+                <i class="fab fa-github --force-inherit"></i> github</a>
+            </li>
+            <li class="navbar__ulist-item">
+                <a class="navbar__link" href="https://www.youtube.com/watch?v=G4z9yW72A1o">
+                <i class="fas fa-angry --force-inherit"></i> get rickrolled</a>
+            </li>
+            <li class="navbar__ulist-item">
+                <a class="navbar__link" href="{% url 'pollapp:about' %}">
+                <i class="fas fa-question-circle --force-inherit"></i> FAQ</a>
+            </li>
+            <li class="navbar__ulist-item">
+                <a class="navbar__link" href="https://www.youtube.com/watch?v=GPXkjtpGCFI">
+                <i class="fas fa-phone --force-inherit"></i> My actual phone number</a>
+            </li>
+        </ul>
+    </nav>
+</footer>
