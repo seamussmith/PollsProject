@@ -1,15 +1,14 @@
 
-function PollVote(self)
+function SendVote(self)
 {
-    console.log(self)
-    let $form = $(self)
+    let $self = $(self)
+    let $form = $(self.parentElement)
     $.ajax({
-        url: "/pollapp/",
-        data: $form.serialize(),
-        method: $form.attr("method")
+        method: $form.attr("method"),
+        data: `${$form.serialize()}&${$self.attr("name")}=${$self.attr("value")}`,
+        url: $form.attr("action")
     })
-    .done((res) => {
-        console.log("Got result", res)
+    .done((result) => {
+        console.log(result);
     })
-    return false;
 }
