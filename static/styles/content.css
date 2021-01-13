@@ -26,8 +26,10 @@ footer {
 }
 
 .content__header {
-    background-color: var(--layer-3);
-    padding: 20px 50px;
+    /* background-color: var(--layer-3); */
+    padding: 5px 25px;
+    margin: 0 200px;
+    border-left: solid var(--link-color) 5px;
 }
 
 .content__subheader {
