@@ -6,19 +6,24 @@
     {% comment %} TODO: Add poll functionality {% endcomment %}
 {% endblock head %}
 {% block body %}
-    <div class="poll-container">
-        {% for i in 0|seq:20 %}
-            <div class="poll" style="animation-delay: {{ forloop.counter|mul:0.05 }}s;">
-                <h3 class="poll__title">GoodPoll</h3>
-                <form action="sdfdsffsd" method="POST" class="poll__form">
-                    {% csrf_token %}
-                    <button type="submit" class="poll__choice">Choice 1</button>
-                    <button type="submit" class="poll__choice">Choice 2</button>
-                    <button type="submit" class="poll__choice">Choice 3</button>
-                    <input type="hidden" name="uuid" value="{{forloop.counter}}">
-                </form>
-            </div>
-        {% endfor %}
+    <div class="content__header">
+        <h1>Ongoing Polls</h1>
     </div>
-    
+    <div class="content__subheader">
+        <h1>Instantly vote on a poll in a single click!</h1>
+    </div>
+    <div class="poll-container">
+    {% for i in 0|seq:20 %}
+        <div class="poll" style="animation-delay: {{ forloop.counter|mul:0.05 }}s;">
+            <h3 class="poll__title">GoodPoll</h3>
+            <form action="sdfdsffsd" method="POST" class="poll__form">
+                {% csrf_token %}
+                <button type="submit" class="poll__choice">Choice 1</button>
+                <button type="submit" class="poll__choice">Choice 2</button>
+                <button type="submit" class="poll__choice">Choice 3</button>
+                <input type="hidden" name="uuid" value="{{forloop.counter}}">
+            </form>
+        </div>
+    {% endfor %}
+    </div>
 {% endblock body %}
