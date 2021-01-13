@@ -20,8 +20,26 @@ footer {
     width: 100%;
 }
 
-content {
-    margin: 50px;
+.content {
+    margin: 50px 300px;
+    min-height: 100vh;
+    display: block;
+    box-shadow: 0 0 5px var(--shadow-color);
+    background-color: var(--layer-1);
+}
+
+@media (max-width: 1500px)
+{
+    .content {
+        margin: 50px 50px;
+    }
+}
+
+@media (max-width: 720px)
+{
+    .content {
+        margin: 50px 0;
+    }
 }
 
 .content__header {
