@@ -29,10 +29,17 @@
 .navbar__link {
     position: relative;
     color: var(--link-color);
-    font-size: 30px;
+    font-size: 23pt;
     padding: 0 10px;
     text-decoration: none;
     transition: all 0.10s;
+}
+
+@media (max-width: 1280px) {
+    .navbar__link {
+        font-size: 18pt;
+        padding: 0 2px;
+    }
 }
 
 .navbar__ulist-item {
