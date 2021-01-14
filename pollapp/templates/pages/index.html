@@ -14,7 +14,7 @@
     <div class="content__header">
         <h1>Ongoing Polls</h1>
     </div>
-    <div class="poll-container">
+    <div class="poll-container" data-next="{{ polls|length }}">
     {% for poll in polls %}
         {% CreatePoll poll forloop.counter %}
     {% endfor %}
