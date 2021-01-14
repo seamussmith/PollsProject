@@ -1,5 +1,5 @@
 
-function SendVote(self)
+function SendVote(self: HTMLElement): void
 {
     let $self = $(self)
     let $form = $(self.parentElement)
