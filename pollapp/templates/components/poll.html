@@ -1,4 +1,4 @@
-<div class="poll" style="animation-delay: {{ i|mul:0.05 }}s;">
+<div class="poll" style="animation-delay: {{ delay|mul:0.05 }}s;">
     <h3 class="poll__title">{{ poll.name }}</h3>
     <form action="{% url "pollapp:index" %}" method="POST" class="poll__form">
         {% csrf_token %}

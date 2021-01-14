@@ -10,8 +10,8 @@ def mul(a, b):
     return str(float(a) * float(b))
  
 @register.inclusion_tag("components/poll.html")
-def CreatePoll(poll, i=0):
+def CreatePoll(poll, delay=0):
     return ({
-        "i": i,
+        "delay": delay,
         "poll": poll
     })
