@@ -5,9 +5,7 @@ from django.shortcuts import render
 def index(request):
     if request.POST:
         return HttpResponse(f"{request.POST}")
-    polls = []
-    for i in range(0, 21):
-        polls.append({
+    polls = [{
             "name": f"Awesome Poll #{i}",
             "choices": [
                 {"text": "Choice 1", "votes": 0},
@@ -15,7 +13,7 @@ def index(request):
                 {"text": "Choice 3", "votes": 0},
             ],
             "uuid": i
-        })
+        } for i in range(0, 21)]
     return render(request, "pages/index.html", context={
         "polls": polls
     })
