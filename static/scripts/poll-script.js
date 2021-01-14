@@ -3,7 +3,7 @@ function SendVote(self)
 {
     let $self = $(self)
     let $form = $(self.parentElement)
-    $form.children().prop("disabled", true)
+    console.log($form)
     $.ajax({
         method: $form.attr("method"),
         data: `${$form.serialize()}&${$self.attr("name")}=${$self.attr("value")}`,
@@ -13,4 +13,5 @@ function SendVote(self)
         console.log(result);
         $form.children().prop("disabled", false)
     })
+    $form.children().prop("disabled", true)
 }
