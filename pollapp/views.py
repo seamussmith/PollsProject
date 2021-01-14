@@ -16,7 +16,7 @@ def index(request):
             }
         })
     return render(request, "pages/index.html", context={
-        polls: polls
+        "polls": polls
     })
 
 def contact(request):
