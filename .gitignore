@@ -5,8 +5,12 @@ __pycache__/
 .pytest_cache
 
 #django
-db.sqlite3
 *.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
 
 #repl.it
 .replit
