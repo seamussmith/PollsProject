@@ -1,14 +1,10 @@
-<div class="poll" id="0" style="animation-delay: 0s;" data-poll-i="0">
-  <h3 class="poll__title"></h3>
-  <form class="poll__form" onsubmit="PollVote(this)">
-    <input
-    class="poll__button"
-    type="submit"
-    value=""
-    data-id=""
-    data-i=""
-    data-poll-i=""
-    >wowie wow</input>
-    <input type="hidden" name="uuid" value="uuid">
-  </form>
+<div class="poll" style="animation-delay: {{ i|mul:0.05 }}s;">
+    <h3 class="poll__title">{{ poll.name }}</h3>
+    <form action="{% url "pollapp:index" %}" method="POST" class="poll__form">
+        {% csrf_token %}
+        {% for choice in poll.choices %}
+        <button type="button" name="choice" value="{{ choice.text }}" class="poll__choice" onclick="SendVote(this)">{{ choice.text }}</button>
+        {% endfor %}
+        <input type="hidden" name="uuid" value="{{ poll.uuid }}">
+    </form>
 </div>
