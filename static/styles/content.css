@@ -56,14 +56,34 @@ footer {
 
 .content__header {
     background-color: var(--layer-3);
-    border-left: solid var(--content-heading-side-border) 20px;
     box-shadow: 1px 1px 1px var(--shadow-color);
     padding: 20px 50px;
+    position: relative;
+}
+
+.content__header::before {
+    content: '';
+    position: absolute;
+    border-left: solid var(--content-heading-side-border) 20px;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    box-shadow: 2px 0px 1px var(--shadow-color);
 }
 
 .content__subheader {
     background-color: var(--layer-2);
-    border-left: solid var(--content-heading-side-border) 20px;
     box-shadow: 1px 1px 1px var(--shadow-color);
+    position: relative;
     padding: 20px 50px;
+}
+
+.content__subheader::before {
+    content: '';
+    position: absolute;
+    border-left: solid var(--content-heading-side-border) 20px;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    box-shadow: 2px 0px 1px var(--shadow-color);
 }
