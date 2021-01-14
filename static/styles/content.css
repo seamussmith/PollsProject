@@ -28,7 +28,7 @@ footer {
     background-color: var(--layer-1); */
 }
 
-@media (max-width: 1500px)
+/* @media (max-width: 1500px)
 {
     .content {
         margin: 50px 50px;
@@ -40,20 +40,30 @@ footer {
     .content {
         margin: 50px 0;
     }
-}
+} */
 
 .content__title {
     background-color: var(--layer-4);
     text-align: center;
     padding: 20px 50px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 1px 1px 1px var(--shadow-color);
 }
 
 .content__header {
     background-color: var(--layer-3);
+    border-left: solid var(--content-heading-side-border) 20px;
+    box-shadow: 1px 1px 1px var(--shadow-color);
     padding: 20px 50px;
 }
 
 .content__subheader {
     background-color: var(--layer-2);
+    border-left: solid var(--content-heading-side-border) 20px;
+    box-shadow: 1px 1px 1px var(--shadow-color);
     padding: 20px 50px;
 }
