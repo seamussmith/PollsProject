@@ -69,3 +69,15 @@ button:hover {
 button:active {
     filter: brightness(0.60);
 }
+
+button:disabled {
+    filter: brightness(0.20);
+}
+
+button:disabled:active {
+    filter: brightness(0.20);
+}
+
+button:disabled:hover {
+    filter: brightness(0.20);
+}
