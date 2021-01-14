@@ -21,11 +21,11 @@ footer {
 }
 
 .content {
-    margin: 50px 300px;
+    /* margin: 50px 300px; */
     min-height: 100vh;
     display: block;
-    box-shadow: 0 0 2px var(--shadow-color);
-    background-color: var(--layer-1);
+    /* box-shadow: 0 0 2px var(--shadow-color);
+    background-color: var(--layer-1); */
 }
 
 @media (max-width: 1500px)
