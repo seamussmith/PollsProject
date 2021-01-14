@@ -13,5 +13,8 @@ function SendVote(self)
         console.log(result);
         $form.children().prop("disabled", false)
     })
+    .fail((e) => {
+        alert(e)
+    })
     $form.children().prop("disabled", true)
 }
