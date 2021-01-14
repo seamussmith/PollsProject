@@ -9,9 +9,9 @@ def seq(mini, maxi):
 def mul(a, b):
     return str(float(a) * float(b))
  
-@register.inclusion_tag()
+@register.inclusion_tag("components/poll.html")
 def CreatePoll(poll, i=0):
-    return render_to_string("components/poll.html", context={
+    return ({
         "i": i,
         "poll": poll
     })
