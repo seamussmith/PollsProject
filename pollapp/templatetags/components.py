@@ -2,7 +2,7 @@ from django.template.defaulttags import register
 
 @register.inclusion_tag("components/poll.html")
 def CreatePoll(poll, delay=0):
-    return ({
+    return {
         "delay": delay,
         "poll": poll
-    })
+    }
