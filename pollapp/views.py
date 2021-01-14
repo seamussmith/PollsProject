@@ -9,11 +9,12 @@ def index(request):
     for i in range(0, 21):
         polls.append({
             "name": f"Awesome Poll #{i}",
-            "choices": {
+            "choices": [
                 {"text": "Choice 1", "votes": 0},
                 {"text": "Choice 2", "votes": 0},
                 {"text": "Choice 3", "votes": 0},
-            }
+            ],
+            "uuid": i
         })
     return render(request, "pages/index.html", context={
         "polls": polls
