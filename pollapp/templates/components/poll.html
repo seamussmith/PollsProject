@@ -3,7 +3,13 @@
     <form action="{% url "pollapp:index" %}" method="POST" class="poll__form">
         {% csrf_token %}
         {% for choice in poll.choices %}
-        <button type="button" name="choice" value="{{ choice.text }}" class="poll__choice" onclick="SendVote(this)">{{ choice.text }}</button>
+        <button
+        type="button"
+        name="choice"
+        value="{{ choice.text }}"
+        data-votes="{{ choice.votes }}"
+        class="poll__choice"
+        onclick="SendVote(this)">{{ choice.text }}</button>
         {% endfor %}
         <input type="hidden" name="uuid" value="{{ poll.uuid }}">
     </form>
