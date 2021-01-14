@@ -1,0 +1,22 @@
+{
+  "name": "pollsproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seamussmith/PollsProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seamussmith/PollsProject/issues"
+  },
+  "homepage": "https://github.com/seamussmith/PollsProject#readme",
+  "dependencies": {
+    "@types/jquery": "^3.5.5"
+  }
+}
