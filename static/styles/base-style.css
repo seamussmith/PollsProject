@@ -24,13 +24,14 @@
     --layer-1: rgb(22, 22, 27);
     --layer-2: rgb(28, 28, 32);
     --layer-3: rgb(31, 31, 36);
-    --layer-4: rgb(49, 49, 53);
+    --layer-4: rgb(39, 39, 43);
     --shadow-color: black;
     --link-color: lightblue;
     --link-hover: rgb(110, 186, 211);
     --text-color: white;
     --text-color-inverse: black;
     --button-color-primary: rgb(32, 116, 211);
+    --content-heading-side-border: #2091d3;
 }
 
 * {
