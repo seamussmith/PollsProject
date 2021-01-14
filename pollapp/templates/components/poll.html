@@ -8,6 +8,7 @@
         name="choice"
         value="{{ choice.text }}"
         data-votes="{{ choice.votes }}"
+        data-votes-formatted="{{ choice.votes|intcomma }}"
         class="poll__choice"
         onclick="SendVote(this)">{{ choice.text }}</button>
         {% endfor %}
