@@ -24,10 +24,18 @@
     animation: pop 0.5s ease forwards;
 }
 
-@media (max-width: 720px)
+@media (max-width: 1280px)
+{
+    .poll {
+        width: 37%;
+    }
+}
+
+@media (max-width: 780px)
 {
     .poll {
         margin: 10px;
+        width: 440px;
     }
     .poll-container {
         padding: 20px 20px;
