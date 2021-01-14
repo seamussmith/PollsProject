@@ -1,5 +1,4 @@
 from django.template.defaulttags import register
-from django.template.loader import render_to_string
 
 # range
 @register.filter()
