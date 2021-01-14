@@ -12,6 +12,6 @@ def mul(a, b):
 @register.inclusion_tag()
 def CreatePoll(poll, i=0):
     return render_to_string("components/poll.html", context={
-        i: i,
-        poll: poll
+        "i": i,
+        "poll": poll
     })
