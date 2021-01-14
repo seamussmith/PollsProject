@@ -6,5 +6,5 @@ def seq(mini, maxi):
 
 @register.filter()
 def mul(a, b):
-  return str(float(a) * float(b))
+    return str(float(a) * float(b))
  
