@@ -8,7 +8,7 @@ from .models import *
 def index(request):
     if request.POST:
         return HttpResponse(f"{request.POST}")
-    polls = []
+    polls = [i.to_dict() for i in Poll.objects.all()][:20] # Grab the first 20 polls
     return render(request, "pages/index.html", context={
         "polls": polls
     })
