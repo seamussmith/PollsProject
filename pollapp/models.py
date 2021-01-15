@@ -7,11 +7,11 @@ import json
 class Poll(models.Model):
     name = models.TextField()
     choices = models.TextField()
-    uuid = models.TextField()
+    uuid = models.TextField(primary_key=True)
 
 def NewPoll(data):
     return Poll(
         name = data["name"],
         choices = json.dumps(data["choices"]),
-        uuid = data.get("uuid") or uuid4(),
+        uuid = data.get("uuid") or str(uuid4()),
     )
