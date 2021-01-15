@@ -1,7 +1,7 @@
 from django.http.response import Http404, HttpResponse
 from django.shortcuts import render
 #from django.db.backends.sqlite3 import *
-import django.db.backends.sqlite3
+from django.db.backends import sqlite3
 
 # Create your views here.
 def index(request):
