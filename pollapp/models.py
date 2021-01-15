@@ -10,7 +10,7 @@ class Poll(models.Model):
     uuid = models.TextField()
     creation_date = models.DateTimeField()
 
-def CreatePoll(name, choices, uuid=None, creation_date=None):
+def NewPoll(name, choices, uuid=None, creation_date=None):
     if uuid is None:
         uuid = uuid4()
     if creation_date is None:
