@@ -5,11 +5,13 @@ import json
 
 
 # Create your models here.
+# ? Maybe make an abstract class with these implmentations?
 class Poll(models.Model):
     name = models.TextField()
     choices = models.TextField()
     uuid = models.TextField(primary_key=True)
 
+    # I chose to make a static new method because I dont want to override the constructor
     @staticmethod
     def new(data):
         return Poll(
@@ -24,3 +26,10 @@ class Poll(models.Model):
             "choices": json.loads(self.choices),
             "uuid": self.uuid
         }
+    
+    def update(self, new_data):
+        stored_data = self.to_dict()
+        stored_data.update(new_data)
+        self.name = stored_data["name"]
+        self.choices = json.dumps(stored_data["choices"])
+        self.uuid = stored_data["uuid"]
