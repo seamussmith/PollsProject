@@ -1,3 +1,4 @@
+from typing import Type
 from django.db import models
 from uuid import uuid4
 from datetime import date
@@ -33,3 +34,13 @@ class Poll(models.Model):
         self.name = stored_data["name"]
         self.choices = json.dumps(stored_data["choices"])
         self.uuid = stored_data["uuid"]
+    
+    def inc_vote(self, index, value):
+        data = self.to_dict()
+        if type(index) is str:
+            [i for i in data["choices"] if i["text"] == index][0]["votes"] += value
+        elif type(index) is int:
+            data["choices"][index]["votes"] += value
+        else:
+            raise TypeError("Index can only be of types (int, str)")
+        self.update(data)
