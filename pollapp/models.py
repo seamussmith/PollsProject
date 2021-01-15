@@ -8,17 +8,10 @@ class Poll(models.Model):
     name = models.TextField()
     choices = models.TextField()
     uuid = models.TextField()
-    creation_date = models.DateTimeField()
 
-def NewPoll(name, choices, uuid=None, creation_date=None):
-    if uuid is None:
-        uuid = uuid4()
-    if creation_date is None:
-        creation_date = date.today().isoformat()
-    str_choices = json.dumps(choices)
+def NewPoll(data):
     return Poll(
-        name = name,
-        choices = str_choices,
-        uuid = uuid,
-        creation_date = creation_date
+        name = data["name"],
+        choices = json.dumps(data["choices"]),
+        uuid = data.get("uuid") or uuid4(),
     )
