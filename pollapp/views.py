@@ -30,7 +30,7 @@ def index(request):
     for i in polls:
         for j in i["choices"]:
             total = reduce(lambda x, y: x + y["votes"], i["choices"], 0)
-            j["precent"] = ceil(j["votes"]/total * 100)
+            j["precent"] = round(j["votes"]/total * 100)
     return render(request, "pages/index.html", context={
         "polls": polls
     })
