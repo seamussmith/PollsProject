@@ -38,6 +38,10 @@
         margin: 10px;
         width: 440px;
     }
+    .poll .poll__form {
+        display: flex;
+        animation: none !important;
+    }
     .poll-container {
         padding: 20px 20px;
     }
