@@ -9,9 +9,16 @@ function SendVote(self) {
         .done((result) => {
         console.log(result);
         $form.children().prop("disabled", false);
+        let data = JSON.parse(result);
+        $form.find(".poll__choice").each((i, $choice) => {
+            let votes = data.choices[parseInt($choice.value)].votes;
+            $choice.dataset.votes = votes;
+            $choice.dataset.votesFormatted = votes.toLocaleString();
+        });
     })
         .fail((e) => {
         alert(e);
+        $form.children().prop("disabled", false);
     });
     $form.children().prop("disabled", true);
 }
