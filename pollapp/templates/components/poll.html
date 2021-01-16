@@ -19,7 +19,7 @@ delay: Animation delay (defaults to 0)
         name="choice"
         value="{{ forloop.counter0 }}"
         data-votes="{{ choice.votes }}"
-        data-votes-formatted="{{ choice.votes|intcomma }}"
+        data-votes-formatted="({{ choice.precent }}%) {{ choice.votes|intcomma }}"
         data-choice-text="{{ choice.text }}"
         class="poll__choice"
         onclick="SendVote(this); event.stopPropagation()">{{ choice.text }}</button>

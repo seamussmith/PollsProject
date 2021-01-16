@@ -5,6 +5,7 @@ from django.db.backends import sqlite3
 from .models import *
 import json
 from functools import reduce
+from math import ceil, floor
 
 # Create your views here.
 def index(request):
@@ -26,6 +27,10 @@ def index(request):
         return HttpResponse(json.dumps(data))
     # Else, assume it is a user trying to access the website
     polls = [i.to_dict() for i in Poll.objects.all()][:20] # Grab the first 20 polls you can get from the database
+    for i in polls:
+        for j in i["choices"]:
+            total = reduce(lambda x, y: x + y["votes"], i["choices"], 0)
+            j["precent"] = ceil(j["votes"]/total * 100)
     return render(request, "pages/index.html", context={
         "polls": polls
     })
