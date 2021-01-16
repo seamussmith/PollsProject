@@ -7,7 +7,7 @@
         <button
         type="button"
         name="choice"
-        value="{{ choice.text }}"
+        value="{{ forloop.counter0 }}"
         data-votes="{{ choice.votes }}"
         data-votes-formatted="{{ choice.votes|intcomma }}"
         class="poll__choice"
