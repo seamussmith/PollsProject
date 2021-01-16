@@ -20,6 +20,7 @@ delay: Animation delay (defaults to 0)
         value="{{ forloop.counter0 }}"
         data-votes="{{ choice.votes }}"
         data-votes-formatted="{{ choice.votes|intcomma }}"
+        data-choice-text="{{ choice.text }}"
         class="poll__choice"
         onclick="SendVote(this)">{{ choice.text }}</button>
         {% endfor %}
