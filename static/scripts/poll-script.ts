@@ -34,10 +34,10 @@ function SendVote(self: HTMLElement): void
         $form.find(".poll__choice").each((i, $choice: HTMLInputElement) => {
             let choice = data.choices[parseInt($choice.value)]
             let votes = choice.votes
-            let percentage = votes/totalVotes * 100
+            let precentage = votes/totalVotes * 100
             $choice.dataset.votes = votes.toString()
             $choice.dataset.votesFormatted = votes.toLocaleString()
-            $choice.style.setProperty("--percentage", `${percentage}%`)
+            $choice.style.setProperty("--precentage", `${precentage}%`)
         })
         $form.addClass("poll__form--voted")
         $self.addClass("poll__choice--selected")

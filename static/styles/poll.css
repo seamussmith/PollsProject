@@ -72,7 +72,7 @@
 }
 
 .poll__choice {
-    --percentage: 0%;
+    --precentage: 0%;
     font-size: 20px;
     padding: 5px;
     margin: 5px;
@@ -104,7 +104,7 @@
 }
 
 .poll__form--voted .poll__choice::before {
-    background-color: var(--poll-percentage-bar);
+    background-color: var(--poll-precentage-bar);
     left: 0;
     top: 0;
     color: var(--text-color);
@@ -112,7 +112,7 @@
     padding-top: 5px;
     padding-left: 5px;
     content: attr(data-choice-text);
-    width: calc(var(--percentage) - 5px);
+    width: calc(var(--precentage) - 5px);
     height: calc(100% - 5px);
     position: absolute;
     z-index: -0.5;
