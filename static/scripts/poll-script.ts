@@ -36,6 +36,7 @@ function SendVote(self: HTMLElement): void
             $choice.dataset.votesFormatted = votes.toLocaleString()
         })
         $form.addClass("poll__form--voted")
+        $self.addClass("poll__choice--selected")
     })
     .fail((e) => { // On fail...
         // Alert user with alert prompt
