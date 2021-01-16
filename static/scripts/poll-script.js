@@ -23,6 +23,7 @@ function SendVote(self) {
             $choice.dataset.votes = votes.toString();
             $choice.dataset.votesFormatted = votes.toLocaleString();
         });
+        $form.addClass("poll__form--voted");
     })
         .fail((e) => {
         // Alert user with alert prompt
