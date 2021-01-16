@@ -33,3 +33,6 @@ function SendVote(self) {
     });
     $form.children().prop("disabled", true); // After sending vote request, disable the form to prevent duplicate votes
 }
+function TogglePollVisibility(poll) {
+    $(poll).toggleClass("poll--visible");
+}

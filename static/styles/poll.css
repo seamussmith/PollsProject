@@ -11,11 +11,11 @@
     background-color: var(--layer-2);
     transform: scale(0);
     border-radius: 20px;
+    transition: 0.25s;
     /* border: 1px solid red; */
     box-shadow: 0px 0px 2px var(--shadow-color);
     height: auto;
     width: 440px;
-    min-height: 100px;
     margin: 10px 20px;
     padding: 20px;
     display: flex;
@@ -66,8 +66,9 @@
 } */
 
 .poll__form {
-    display: flex;
     flex-direction: column;
+    transform-origin: top;
+    display: none;
 }
 
 .poll__choice {
@@ -122,4 +123,9 @@
 .poll__choice--selected {
     /* TODO: Make proper color for selected poll */
     background-color: green;
+}
+
+.poll--visible .poll__form {
+    display: flex;
+    animation: curtain 0.1s linear;
 }
