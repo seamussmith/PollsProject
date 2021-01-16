@@ -19,6 +19,7 @@
     margin: 10px 20px;
     padding: 20px;
     display: flex;
+    align-self: flex-start;
     flex-direction: column;
     /* opacity: 0; */
     animation: pop 0.5s ease forwards;
