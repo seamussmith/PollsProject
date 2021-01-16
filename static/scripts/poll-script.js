@@ -24,7 +24,7 @@ function SendVote(self) {
             let votes = choice.votes;
             let precentage = votes / totalVotes * 100;
             $choice.dataset.votes = votes.toString();
-            $choice.dataset.votesFormatted = votes.toLocaleString();
+            $choice.dataset.votesFormatted = `(${Math.round(precentage)}%) ${votes.toLocaleString()}`;
             $choice.style.setProperty("--precentage", `${precentage}%`);
         });
         $form.addClass("poll__form--voted");
