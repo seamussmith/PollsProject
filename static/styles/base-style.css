@@ -16,7 +16,8 @@
     --text-color: none;
     --text-color-inverse: none;
     --button-color-primary: none;
-    --button-color-primary-dark: none
+    --button-color-primary-dark: none;
+    --poll-percentage-bar: none;
 }
 
 .dark {
@@ -32,7 +33,8 @@
     --text-color: white;
     --text-color-inverse: black;
     --button-color-primary: rgb(32, 116, 211);
-    --button-color-primary-dark: rgb(21, 75, 138);
+    --button-color-primary-dark: rgb(16, 58, 105);
+    --poll-percentage-bar: rgb(28, 84, 148);
     --content-heading-side-border: #2091d3;
 }
 

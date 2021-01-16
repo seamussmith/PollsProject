@@ -104,7 +104,7 @@
 }
 
 .poll__form--voted .poll__choice::before {
-    background-color: var(--button-color-primary);
+    background-color: var(--poll-percentage-bar);
     left: 0;
     top: 0;
     color: var(--text-color);
