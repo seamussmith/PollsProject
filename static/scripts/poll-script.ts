@@ -22,7 +22,7 @@ function SendVote(self: HTMLElement): void
         // Serialize hidden inputs in form and add the vote to the data sent
         // NOTE: The data for the button selected by the user is not serialized by $form.serialize(),
         // NOTE: so you have to manually add the data attributed to the button clicked to the data sent.
-        data: `${$form.serialize()}&${$self.attr("name")}=${$self.attr("value")}`, 
+        data: `${$form.serialize()}&${$self.attr("name")}=${$self.attr("value")}`,
         url: $form.attr("action")
     })
     .done((result) => { // On a successful vote...
