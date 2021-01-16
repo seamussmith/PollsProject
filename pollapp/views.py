@@ -20,9 +20,9 @@ def index(request):
         # Save and return the new data for the poll as a JSON string
         poll.save()
         data = poll.to_dict()
-        total = reduce(lambda x, y: x + y["votes"], data["choices"], 0)
-        for i in data["choices"]:
-            i["percent"] = i["votes"]/total * 100
+        #total = reduce(lambda x, y: x + y["votes"], data["choices"], 0)
+        #for i in data["choices"]:
+        #    i["percent"] = i["votes"]/total * 100
         return HttpResponse(json.dumps(data))
     # Else, assume it is a user trying to access the website
     polls = [i.to_dict() for i in Poll.objects.all()][:20] # Grab the first 20 polls you can get from the database

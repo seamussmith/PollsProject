@@ -17,10 +17,12 @@ function SendVote(self) {
         $form.children().prop("disabled", false); // Re-enable form children
         let data = JSON.parse(result); // Parse JSON sent by server, interface data with Poll interface
         console.log(data);
+        let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0);
         // Update every poll button's data with data sent by server
         $form.find(".poll__choice").each((i, $choice) => {
-            let votes = data.choices[parseInt($choice.value)].votes;
-            let percentage = data.choices[parseInt($choice.value)].percent;
+            let choice = data.choices[parseInt($choice.value)];
+            let votes = choice.votes;
+            let percentage = votes / totalVotes * 100;
             $choice.dataset.votes = votes.toString();
             $choice.dataset.votesFormatted = votes.toLocaleString();
             $choice.style.setProperty("--percentage", `${percentage}%`);
