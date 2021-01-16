@@ -7,9 +7,9 @@ function SendVote(self) {
         url: $form.attr("action")
     })
         .done((result) => {
-        console.log(result);
         $form.children().prop("disabled", false);
         let data = JSON.parse(result);
+        console.log(data);
         $form.find(".poll__choice").each((i, $choice) => {
             let votes = data.choices[parseInt($choice.value)].votes;
             $choice.dataset.votes = votes;
