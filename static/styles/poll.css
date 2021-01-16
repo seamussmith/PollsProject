@@ -25,6 +25,14 @@
     animation: pop 0.5s ease forwards;
 }
 
+.poll:hover {
+    background-color: var(--layer-4);
+}
+
+.poll:active {
+    background-color: var(--layer-3);
+}
+
 @media (max-width: 1280px)
 {
     .poll {
