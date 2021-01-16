@@ -44,5 +44,5 @@ class Poll(models.Model):
         if type(index) is int:
             data["choices"][index]["votes"] += value
         else:
-            raise TypeError("Index can only be of types (int, str)")
+            raise TypeError("Index can only be of types (int)")
         self.update(data)
