@@ -13,6 +13,7 @@ class Poll(models.Model):
     uuid = models.TextField(primary_key=True)
 
     # I chose to make a static new method because I dont want to override the constructor
+    # Returns a new Poll database object
     @staticmethod
     def new(data):
         return Poll(
@@ -21,6 +22,7 @@ class Poll(models.Model):
             uuid = data.get("uuid") or str(uuid4()),
         )
 
+    # Returns data as a dict
     def to_dict(self):
         return {
             "name": self.name,
@@ -28,6 +30,7 @@ class Poll(models.Model):
             "uuid": self.uuid
         }
     
+    # Update Polls using a dict with new data
     def update(self, new_data):
         stored_data = self.to_dict()
         stored_data.update(new_data)
@@ -35,11 +38,12 @@ class Poll(models.Model):
         self.choices = json.dumps(stored_data["choices"])
         self.uuid = stored_data["uuid"]
     
+    # Increment the choice's votes by the value given.
     def inc_vote(self, index, value):
         data = self.to_dict()
         if type(index) is str:
             [i for i in data["choices"] if i["text"] == index][0]["votes"] += value
-        elif type(index) is int:
+        if type(index) is int:
             data["choices"][index]["votes"] += value
         else:
             raise TypeError("Index can only be of types (int, str)")
