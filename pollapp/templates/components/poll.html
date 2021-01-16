@@ -1,7 +1,7 @@
 {% load humanize %}
 <div class="poll" style="animation-delay: {{ delay|mul:0.05 }}s;">
     <h3 class="poll__title">{{ poll.name }}</h3>
-    <form action="{% url "pollapp:index" %}" method="POST" class="poll__form">
+    <form action="{% url "pollapp:index" %}" method="POST" class="poll__form" id="{{ poll.uuid }}">
         {% csrf_token %}
         {% for choice in poll.choices %}
         <button
