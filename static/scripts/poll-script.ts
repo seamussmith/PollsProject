@@ -5,6 +5,7 @@ interface Poll // Interface for Poll object recieved by server
     choices: Array<{
         name: string
         votes: number
+        percent: number
     }>
     uuid: string
 }
@@ -32,8 +33,10 @@ function SendVote(self: HTMLElement): void
         // Update every poll button's data with data sent by server
         $form.find(".poll__choice").each((i, $choice: HTMLInputElement) => {
             let votes = data.choices[parseInt($choice.value)].votes
+            let percentage = data.choices[parseInt($choice.value)].percent
             $choice.dataset.votes = votes.toString()
             $choice.dataset.votesFormatted = votes.toLocaleString()
+            $choice.style.setProperty("--percentage", `${percentage}%`)
         })
         $form.addClass("poll__form--voted")
         $self.addClass("poll__choice--selected")
