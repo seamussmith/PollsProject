@@ -91,25 +91,30 @@
 
 .poll__form--voted .poll__choice {
     text-align: left;
-    color: transparent;
+    /* color: transparent; */
     position: relative;
     outline: solid var(--button-color-primary) 2px;
     background-color: var(--button-color-primary-dark);
     border-radius: 0;
     -webkit-user-select: none;
     -moz-user-select: none;
+    /* padding-left: 2%; */
     /* transition: none !important; */
 }
 
 .poll__form--voted .poll__choice::before {
+    background-color: var(--button-color-primary);
+    left: 0;
+    top: 0;
+    padding-top: 5px;
+    padding-left: 5px;
+    --percentage: 0%;
     content: attr(data-choice-text);
-    /* left: 2%; */
-    left: 2%;
-    /* outline: solid red 2px; */
+    width: calc(var(--percentage) - 5px);
+    height: calc(100% - 5px);
     position: absolute;
-    /* margin-left: 5px; */
-    color: var(--text-color);
-    font-size: 15pt;
+    z-index: -0.5;
+    /* outline: solid red 2px; */
 }
 
 .poll__form--voted .poll__choice::after {
