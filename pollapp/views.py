@@ -20,7 +20,7 @@ def index(request):
         # Save and return the new data for the poll as a JSON string
         poll.save()
         data = poll.to_dict()
-        total = reduce(lambda x, y: x + y["votes"], data["choices"])
+        total = reduce(lambda x, y: x + y["votes"], data["choices"], 0)
         for i in data["choices"]:
             i["percent"] = i["votes"]/total * 100
         return HttpResponse(json.dumps(data))
