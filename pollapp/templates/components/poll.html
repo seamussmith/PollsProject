@@ -1,3 +1,13 @@
+{% comment %} 
+
+Poll Component
+
+Parameters:
+poll: Poll dict
+delay: Animation delay (defaults to 0)
+
+{% endcomment %}
+
 {% load humanize %}
 <div class="poll" style="animation-delay: {{ delay|mul:0.05 }}s;">
     <h3 class="poll__title">{{ poll.name }}</h3>
