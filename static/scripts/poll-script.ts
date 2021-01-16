@@ -42,9 +42,9 @@ function SendVote(self: HTMLElement): void
         $form.addClass("poll__form--voted")
         $self.addClass("poll__choice--selected")
     })
-    .fail((_, err, e) => { // On fail...
+    .fail((response, err, e) => { // On fail...
         // Alert user with alert prompt
-        alert(`A server error has occured in the process of handling your vote.\nServer Error Response: ${err}\nPlease try again`)
+        alert(`A server error has occured in the process of handling your vote.\nServer Response Code: ${response.status} ${response.statusText}\nPlease try again`)
         $form.children().prop("disabled", false) // Re-enable voting of poll
     })
     $form.children().prop("disabled", true) // After sending vote request, disable the form to prevent duplicate votes
