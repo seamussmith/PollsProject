@@ -1,4 +1,14 @@
 
+interface Poll
+{
+    name: string
+    choices: Array<{
+        name: string
+        votes: number
+    }>
+    uuid: string
+}
+
 function SendVote(self: HTMLElement): void
 {
     let $self = $(self)
@@ -10,11 +20,11 @@ function SendVote(self: HTMLElement): void
     })
     .done((result) => {
         $form.children().prop("disabled", false)
-        let data = JSON.parse(result)
+        let data: Poll = JSON.parse(result)
         console.log(data)
         $form.find(".poll__choice").each((i, $choice: HTMLInputElement) => {
             let votes = data.choices[parseInt($choice.value)].votes
-            $choice.dataset.votes = votes
+            $choice.dataset.votes = votes.toString()
             $choice.dataset.votesFormatted = votes.toLocaleString()
         })
     })

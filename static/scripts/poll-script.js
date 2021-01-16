@@ -12,7 +12,7 @@ function SendVote(self) {
         console.log(data);
         $form.find(".poll__choice").each((i, $choice) => {
             let votes = data.choices[parseInt($choice.value)].votes;
-            $choice.dataset.votes = votes;
+            $choice.dataset.votes = votes.toString();
             $choice.dataset.votesFormatted = votes.toLocaleString();
         });
     })
