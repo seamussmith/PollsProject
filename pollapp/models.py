@@ -41,8 +41,6 @@ class Poll(models.Model):
     # Increment the choice's votes by the value given.
     def inc_vote(self, index, value):
         data = self.to_dict()
-        if type(index) is str:
-            [i for i in data["choices"] if i["text"] == index][0]["votes"] += value
         if type(index) is int:
             data["choices"][index]["votes"] += value
         else:
