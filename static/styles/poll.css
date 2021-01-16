@@ -92,14 +92,21 @@
     text-align: left;
     color: transparent;
     position: relative;
+    outline: solid var(--button-color-primary) 2px;
+    background-color: var(--button-color-primary-dark);
+    border-radius: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     /* transition: none !important; */
 }
 
 .poll__form--voted .poll__choice::before {
     content: attr(data-choice-text);
+    /* left: 2%; */
     left: 2%;
+    /* outline: solid red 2px; */
     position: absolute;
-    margin-left: 5px;
+    /* margin-left: 5px; */
     color: var(--text-color);
     font-size: 15pt;
 }
@@ -110,4 +117,9 @@
     font-size: 15pt;
     color: var(--text-color);
     position: absolute;
+}
+
+.poll__choice--selected {
+    /* TODO: Make proper color for selected poll */
+    background-color: green;
 }
