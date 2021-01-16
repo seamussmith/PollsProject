@@ -13,7 +13,7 @@ def index(request):
         uuid = body.get("uuid")
         choice = int(body.get("choice"))
         # Query the database for the poll
-        poll = next(i for i in Poll.objects.all() if i.uuid == uuid)
+        poll = Poll.objects.get(uuid=uuid)
         # Increment the choice that the user chose by 1
         poll.inc_vote(choice, 1)
         # Save and return the new data for the poll as a JSON string
