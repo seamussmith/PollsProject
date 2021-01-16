@@ -16,6 +16,7 @@
     --text-color: none;
     --text-color-inverse: none;
     --button-color-primary: none;
+    --button-color-primary-dark: none
 }
 
 .dark {
@@ -31,6 +32,7 @@
     --text-color: white;
     --text-color-inverse: black;
     --button-color-primary: rgb(32, 116, 211);
+    --button-color-primary-dark: rgb(21, 75, 138);
     --content-heading-side-border: #2091d3;
 }
 
