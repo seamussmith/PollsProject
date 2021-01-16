@@ -87,3 +87,27 @@
 }
 
 /* TODO: Add modifier for polls that have been voted on */
+
+.poll__form--voted .poll__choice {
+    text-align: left;
+    color: transparent;
+    position: relative;
+    /* transition: none !important; */
+}
+
+.poll__form--voted .poll__choice::before {
+    content: attr(data-choice-text);
+    left: 2%;
+    position: absolute;
+    margin-left: 5px;
+    color: var(--text-color);
+    font-size: 15pt;
+}
+
+.poll__form--voted .poll__choice::after {
+    content: attr(data-votes-formatted);
+    right: 2%;
+    font-size: 15pt;
+    color: var(--text-color);
+    position: absolute;
+}
