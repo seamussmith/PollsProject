@@ -27,6 +27,7 @@
 
 .poll:hover {
     background-color: var(--layer-4);
+    cursor: pointer;
 }
 
 .poll:active {
@@ -146,5 +147,13 @@
 
 .poll--visible .poll__form {
     display: flex;
-    animation: curtain 0.1s linear;
+    animation: fadein 0.25s linear;
+}
+
+.poll--visible:hover {
+    background-color: var(--layer-3);
+}
+
+.poll--visible:active {
+    background-color: var(--layer-2);
 }
