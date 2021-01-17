@@ -29,7 +29,7 @@ def index(request):
     polls = [i.to_dict() for i in Poll.objects.all()][:20] # Grab the first 20 polls you can get from the database
     for i in polls:
         for j in i["choices"]:
-            total = reduce(lambda x, y: x + y["votes"], i["choices"], 0)
+            total = reduce(lambda x, y: x + y["votes"], i["choices"], 0) or 1
             j["precent"] = round(j["votes"]/total * 100)
     return render(request, "pages/index.html", context={
         "polls": polls
