@@ -46,3 +46,10 @@ class Poll(models.Model):
         else:
             raise TypeError("Index can only be of types (int)")
         self.update(data)
+
+    # Reset all votes on this poll
+    def reset(self):
+        data = self.to_dict()
+        for i in data["choices"]:
+            i["votes"] = 0
+        self.update(data)
