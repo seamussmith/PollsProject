@@ -16,7 +16,7 @@ def index(request):
         # Get the uuid of the poll and the user's choice
         uuid = body.get("uuid")
         choice = int(body.get("choice"))
-        prev_choice = request.session["votes"].get(uuid)
+        prev_choice = request.session["votes"].get(uuid) # Grab the user's previous vote for this poll
         # Query the database for the poll
         poll = Poll.objects.get(uuid=uuid)
         # Increment the choice that the user chose by 1
