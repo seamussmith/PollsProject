@@ -11,7 +11,7 @@ delay: Animation delay (defaults to 0)
 {% load humanize %}
 <div class="poll" style="animation-delay: {{ delay|mul:0.05 }}s;" onclick="TogglePollVisibility(this)">
     <h3 class="poll__title">{{ poll.name }}</h3>
-    <form action="{% url "pollapp:index" %}" method="POST" class="poll__form" id="{{ poll.uuid }}">
+    <form action="{% url "pollapp:index" %}" method="POST" class="poll__form {% if poll.vote != None %}poll__form--voted{% endif %}" id="{{ poll.uuid }}">
         {% csrf_token %}
         {% for choice in poll.choices %}
         <button
@@ -21,7 +21,8 @@ delay: Animation delay (defaults to 0)
         data-votes="{{ choice.votes }}"
         data-votes-formatted="({{ choice.precent }}%) {{ choice.votes|intcomma }}"
         data-choice-text="{{ choice.text }}"
-        class="poll__choice"
+        class="poll__choice {% if poll.vote == forloop.counter0 %}poll__choice--selected{% endif %}"
+        style="--precentage: {{choice.precent}}%;"
         onclick="SendVote(this); event.stopPropagation()">{{ choice.text }}</button>
         {% endfor %}
         <input type="hidden" name="uuid" value="{{ poll.uuid }}">
