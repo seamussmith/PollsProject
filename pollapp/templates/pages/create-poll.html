@@ -8,12 +8,17 @@
             <h1>Submit a poll!</h1>
             {% csrf_token %}
             <label for="name">Question</label>
-            <input type="text" name="name" placeholder="Question">
+            <input type="text" name="name" placeholder="Question" required>
             <label for="choice[]">Choices</label>
             <input type="text" name="choice[]">
             <input type="text" name="choice[]">
             <input type="text" name="choice[]">
             <input type="submit">
+            <ul>
+            {% for error in errors %}
+                <li>{{error}}</li>
+            {% endfor %}
+            </ul>
         </form>
     </div>
     

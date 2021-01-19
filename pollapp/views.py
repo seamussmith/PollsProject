@@ -6,6 +6,7 @@ from .models import *
 import json
 from functools import reduce
 from math import ceil, floor
+from django import forms
 
 # Create your views here.
 def index(request):
@@ -46,17 +47,32 @@ def index(request):
 def contact(request):
     return render(request, "pages/contact.html", context={})
 
+def validate_poll_form(data):
+    errors = []
+    if data.get("name") == "":
+        errors.append("Form must have a name")
+    if len(data.getlist("choices")) == 0:
+        errors.append("Poll must have at least one choice")
+    return errors
+
 def submit_poll(request):
     if request.POST:
         body = request.POST
+        errors = validate_poll_form(body)
+        if len(errors) != 0:
+            return render(request, "pages/create-poll.html", context={
+                "errors": errors
+            })
         choices = body.getlist("choice[]")
         name = body.get("name")
         new_poll = Poll.new({
             "name": name,
-            "choices": [{"text": i, "votes": 0} for i in choices]
+            "choices": [{"text": i, "votes": 0} for i in choices if i]
         })
         new_poll.save()
-    return render(request, "pages/create-poll.html", context={})
+    return render(request, "pages/create-poll.html", context={
+        "errors": []
+    })
 
 def placeholder(request):
     # TODO: Add a proper placeholder page (404?)
