@@ -34,6 +34,7 @@ def index(request):
             #    i["percent"] = i["votes"]/total * 100
             request.session["votes"][uuid] = choice
         data = poll.to_dict()
+        data["unvoted"] = prev_choice == choice
         return HttpResponse(json.dumps(data))
     # Else, assume it is a user trying to access the website
     polls = [i.to_dict() for i in Poll.objects.all()][:20] # Grab the first 20 polls you can get from the database
