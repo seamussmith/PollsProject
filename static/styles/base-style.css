@@ -61,27 +61,33 @@ a:hover {
     color: inherit;
 }
 
-button {
+button, input[type="submit"] {
     transition: all 0.25s ease;
+    background-color: var(--button-color-primary);
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+    font-size: 23pt;
+    padding: 10px;
 }
 
-button:hover {
+button:hover, input[type="submit"]:hover {
     filter: brightness(1.2);
     cursor: pointer;
 }
 
-button:active {
+button:active, input[type="submit"]:active {
     filter: brightness(0.9);
 }
 
-button:disabled {
+button:disabled, input[type="submit"]:disabled {
     filter: brightness(0.20);
 }
 
-button:disabled:active {
+button:disabled:active, input[type="submit"]:disabled:active {
     filter: brightness(0.20);
 }
 
-button:disabled:hover {
+button:disabled:hover, input[type="submit"]:disabled:hover {
     filter: brightness(0.20);
 }
