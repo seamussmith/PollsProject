@@ -46,6 +46,9 @@ def index(request):
 def contact(request):
     return render(request, "pages/contact.html", context={})
 
+def create_poll(request):
+    return render(request, "pages/create-poll.html", context={})
+
 def placeholder(request):
     # TODO: Add a proper placeholder page (404?)
     return render(request, "PLACEHOLDER", context={})
