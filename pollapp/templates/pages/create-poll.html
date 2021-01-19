@@ -8,11 +8,11 @@
             <h1>Submit a poll!</h1>
             {% csrf_token %}
             <label for="name">Question</label>
-            <input type="text" name="name" placeholder="Question" required>
+            <input type="text" name="name" placeholder="Question" required maxlength="100">
             <label for="choice[]">Choices</label>
-            <input type="text" name="choice[]">
-            <input type="text" name="choice[]">
-            <input type="text" name="choice[]">
+            <input type="text" name="choice[]" maxlength="20">
+            <input type="text" name="choice[]" maxlength="20">
+            <input type="text" name="choice[]" maxlength="20">
             <input type="submit">
             <ul>
             {% for error in errors %}
