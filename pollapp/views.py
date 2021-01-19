@@ -51,8 +51,13 @@ def validate_poll_form(data):
     errors = []
     if data.get("name") == "":
         errors.append("Form must have a name")
-    if len(data.getlist("choices")) == 0:
+    if len(data.getlist("choice[]")) == 0:
         errors.append("Poll must have at least one choice")
+    for i, choice in enumerate(data.getlist("choices")):
+        if len(choice) > 20:
+            errors.append(f"Choice {i+1} must be less than 40 characters long")
+    if len(data.get("name")) > 100:
+        errors.append(f"Question must be less than 100 characters long")
     return errors
 
 def submit_poll(request):
