@@ -4,10 +4,11 @@
 {% endblock head %}
 {% block body %}
     <div class="poll-form-container">
-        <form action="{% url 'pollapp:submit-poll' %}" method="POST">
+        <form action="{% url 'pollapp:submit-poll' %}" method="POST" class="poll-form">
+            <h1>Submit a poll!</h1>
             {% csrf_token %}
             <label for="name">Question</label>
-            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="name" placeholder="Question">
             <label for="choice[]">Choices</label>
             <input type="text" name="choice[]">
             <input type="text" name="choice[]">
