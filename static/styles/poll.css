@@ -142,7 +142,7 @@
 
 .poll__choice--selected {
     /* TODO: Make proper color for selected poll */
-    background-color: green;
+    filter: hue-rotate(-84deg) !important;
 }
 
 .poll--visible .poll__form {
