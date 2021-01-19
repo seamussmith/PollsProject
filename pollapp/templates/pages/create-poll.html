@@ -3,7 +3,8 @@
     <title>Create A Poll 🗳</title>
 {% endblock head %}
 {% block body %}
-    <form action="" method="POST">
+    <form action="{% url 'pollapp:submit-poll' %}" method="POST">
+        {% csrf_token %}
         <input type="text" name="name" id="">
         <input type="text" name="choice[]">
         <input type="text" name="choice[]">
