@@ -29,7 +29,7 @@ function SendVote(self: HTMLElement): void
         $form.children().prop("disabled", false) // Re-enable form children
         let data: Poll = JSON.parse(result) // Parse JSON sent by server, interface data with Poll interface
         console.log(data)
-        let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0);
+        let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1
         // Update every poll button's data with data sent by server
         $form.find(".poll__choice").each((i, $choice: HTMLInputElement) => {
             let choice = data.choices[parseInt($choice.value)]
