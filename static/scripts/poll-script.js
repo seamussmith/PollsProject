@@ -15,6 +15,7 @@ function SendVote(self) {
     })
         .done((result) => {
         $form.children().prop("disabled", false); // Re-enable form children
+        $form.children().removeClass("poll__choice--selected");
         let data = JSON.parse(result); // Parse JSON sent by server, interface data with Poll interface
         console.log(data);
         let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1;
@@ -28,7 +29,8 @@ function SendVote(self) {
             $choice.style.setProperty("--precentage", `${precentage}%`);
         });
         $form.addClass("poll__form--voted");
-        $self.addClass("poll__choice--selected");
+        if (!data.unvoted)
+            $self.addClass("poll__choice--selected");
     })
         .fail((response, err, e) => {
         // Alert user with alert prompt
