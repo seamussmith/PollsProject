@@ -15,22 +15,25 @@ def index(request):
         body = request.POST
         # Get the uuid of the poll and the user's choice
         uuid = body.get("uuid")
+        print(request.session["votes"].get(uuid))
         choice = int(body.get("choice"))
+        prev_choice = request.session["votes"].get(uuid)
         # Query the database for the poll
         poll = Poll.objects.get(uuid=uuid)
         # Increment the choice that the user chose by 1
         if uuid in request.session["votes"]:
             poll.inc_vote(request.session["votes"][uuid], -1)
-            request.session["votes"].pop(uuid)
-        if not choice == request.session["votes"].get(uuid):
-            poll.inc_vote(choice, 1)
-            # Save and return the new data for the poll as a JSON string
             poll.save()
+            request.session["votes"].pop(uuid)
+        if choice != prev_choice:
+            poll.inc_vote(choice, 1)
+            poll.save()
+            # Save and return the new data for the poll as a JSON string
             #total = reduce(lambda x, y: x + y["votes"], data["choices"], 0)
             #for i in data["choices"]:
             #    i["percent"] = i["votes"]/total * 100
+            request.session["votes"][uuid] = choice
         data = poll.to_dict()
-        request.session["votes"][uuid] = choice
         return HttpResponse(json.dumps(data))
     # Else, assume it is a user trying to access the website
     polls = [i.to_dict() for i in Poll.objects.all()][:20] # Grab the first 20 polls you can get from the database
