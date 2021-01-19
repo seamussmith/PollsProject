@@ -46,7 +46,16 @@ def index(request):
 def contact(request):
     return render(request, "pages/contact.html", context={})
 
-def create_poll(request):
+def submit_poll(request):
+    if request.POST:
+        body = request.POST
+        choices = body.getlist("choice[]")
+        name = body.get("name")
+        new_poll = Poll.new({
+            "name": name,
+            "choices": [{"text": i, "votes": 0} for i in choices]
+        })
+        new_poll.save()
     return render(request, "pages/create-poll.html", context={})
 
 def placeholder(request):
