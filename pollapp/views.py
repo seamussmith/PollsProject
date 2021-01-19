@@ -15,7 +15,6 @@ def index(request):
         body = request.POST
         # Get the uuid of the poll and the user's choice
         uuid = body.get("uuid")
-        print(request.session["votes"].get(uuid))
         choice = int(body.get("choice"))
         prev_choice = request.session["votes"].get(uuid)
         # Query the database for the poll
