@@ -9,7 +9,7 @@ from math import ceil, floor
 
 # Create your views here.
 def index(request):
-    if not request.session.get("votes"):
+    if not request.session.get("votes"): # if there is no storage for votes...
         request.session["votes"] = {}
     if request.POST: # If the request is a POST requset, assuming this is a vote...
         body = request.POST
@@ -20,20 +20,17 @@ def index(request):
         # Query the database for the poll
         poll = Poll.objects.get(uuid=uuid)
         # Increment the choice that the user chose by 1
-        if uuid in request.session["votes"]:
-            poll.inc_vote(request.session["votes"][uuid], -1)
+        if uuid in request.session["votes"]: # If the user already voted on this poll
+            poll.inc_vote(request.session["votes"][uuid], -1) # Decrement the user's previous choice
             poll.save()
-            request.session["votes"].pop(uuid)
-        if choice != prev_choice:
-            poll.inc_vote(choice, 1)
+            request.session["votes"].pop(uuid) # Remove the record of the vote
+        if choice != prev_choice: # If this was a different choice
+            poll.inc_vote(choice, 1) # Increment the vote of the choice by 1
             poll.save()
-            # Save and return the new data for the poll as a JSON string
-            #total = reduce(lambda x, y: x + y["votes"], data["choices"], 0)
-            #for i in data["choices"]:
-            #    i["percent"] = i["votes"]/total * 100
-            request.session["votes"][uuid] = choice
+            request.session["votes"][uuid] = choice # Save the vote to the user's session
+        # Save and return the new data for the poll as a JSON string
         data = poll.to_dict()
-        data["unvoted"] = prev_choice == choice
+        data["unvoted"] = prev_choice == choice # Say if this was a vote or unvote
         return HttpResponse(json.dumps(data))
     # Else, assume it is a user trying to access the website
     polls = [i.to_dict() for i in Poll.objects.all()][:20] # Grab the first 20 polls you can get from the database
