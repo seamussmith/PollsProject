@@ -126,6 +126,7 @@
     padding-left: 5px;
     content: attr(data-choice-text);
     width: calc(var(--precentage) - 5px);
+    transition: 0.25s;
     height: calc(100% - 5px);
     position: absolute;
     z-index: -0.5;
