@@ -36,3 +36,9 @@ input[type="text"] {
 input[type="text"]:focus {
     outline: none;
 }
+
+.poll-form__add {
+    font-size: 15pt;
+    padding: 5px;
+    background-color: rgb(39, 126, 27);
+}
