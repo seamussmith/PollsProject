@@ -57,3 +57,17 @@ function TogglePollVisibility(poll: HTMLElement)
 {
     $(poll).toggleClass("poll--visible")
 }
+
+function GrabMorePolls(self: HTMLInputElement)
+{
+    let $self: JQuery = $(self)
+    let next = $self.data("next")
+    $.ajax({
+        method: "GET",
+        url: `${$self.data("url")}?next=${next}`
+    }).done((result) => {
+        console.log(result)
+        $(".poll-container").eq(0).append(result)
+        $self.data("next", $(".poll-container").children().length)
+    })
+}

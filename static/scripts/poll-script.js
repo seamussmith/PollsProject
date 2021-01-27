@@ -42,3 +42,15 @@ function SendVote(self) {
 function TogglePollVisibility(poll) {
     $(poll).toggleClass("poll--visible");
 }
+function GrabMorePolls(self) {
+    let $self = $(self);
+    let next = $self.data("next");
+    $.ajax({
+        method: "GET",
+        url: `${$self.data("url")}?next=${next}`
+    }).done((result) => {
+        console.log(result);
+        $(".poll-container").eq(0).append(result);
+        $self.data("next", $(".poll-container").children().length);
+    });
+}
