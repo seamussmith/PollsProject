@@ -13,9 +13,10 @@
     <div class="content__header">
         <h1>Ongoing Polls</h1>
     </div>
-    <div class="poll-container" data-next="{{ polls|length }}">
+    <div class="poll-container">
     {% for poll in polls %}
         {% CreatePoll poll forloop.counter %}
     {% endfor %}
     </div>
+    <button onclick="GrabMorePolls(this)" data-next="{{ polls|length }}" data-url="{% url 'pollapp:grab-polls' %}">Grab polls</button>
 {% endblock body %}
