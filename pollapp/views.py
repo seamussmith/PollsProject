@@ -79,7 +79,8 @@ def submit_poll(request):
         "errors": []
     })
 
-def grab_polls(request, next_poll):
+def grab_polls(request):
+    next_poll = int(request.GET.get("next"))
     polls = [i.to_dict() for i in Poll.objects.all()][next_poll:next_poll+20]
     return render(request, "pages/grab-polls.html", {
         "polls": polls
