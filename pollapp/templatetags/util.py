@@ -25,3 +25,7 @@ def div(a, b):
 @register.filter()
 def mod(a, b):
     return str(float(a) % float(b))
+
+@register.filter(name='lookup')
+def lookup(value, arg):
+    return value.get(arg)
