@@ -37,11 +37,11 @@ def index(request):
     polls = list(reversed([i.to_dict() for i in Poll.objects.all()])) # Grab the first 20 polls you can get from the database
     for i in polls:
         total = reduce(lambda x, y: x + y["votes"], i["choices"], 0) or 1
-        i["vote"] = request.session["votes"].get(i["uuid"])
         for j in i["choices"]:
             j["precent"] = round(j["votes"]/total * 100)
     return render(request, "pages/index.html", context={
-        "polls": polls
+        "polls": polls,
+        "votes": request.session.get("votes")
     })
 
 def contact(request):
