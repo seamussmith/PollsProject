@@ -34,7 +34,7 @@ def index(request):
         data["unvoted"] = prev_choice == choice # Say if this was a vote or unvote
         return HttpResponse(json.dumps(data))
     # Else, assume it is a user trying to access the website
-    polls = list(reversed([i.to_dict() for i in Poll.objects.all()]))[:20] # Grab the first 20 polls you can get from the database
+    polls = list(reversed([i.to_dict() for i in Poll.objects.all()])) # Grab the first 20 polls you can get from the database
     for i in polls:
         total = reduce(lambda x, y: x + y["votes"], i["choices"], 0) or 1
         i["vote"] = request.session["votes"].get(i["uuid"])

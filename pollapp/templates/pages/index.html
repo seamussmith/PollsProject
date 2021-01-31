@@ -18,5 +18,5 @@
         {% CreatePoll poll forloop.counter %}
     {% endfor %}
     </div>
-    <button onclick="GrabMorePolls(this)" data-next="{{ polls|length }}" data-url="{% url 'pollapp:grab-polls' %}">Grab polls</button>
+    {% comment %} <button onclick="GrabMorePolls(this)" data-next="{{ polls|length }}" data-url="{% url 'pollapp:grab-polls' %}">Grab polls</button> {% endcomment %}
 {% endblock body %}
