@@ -29,3 +29,7 @@ def mod(a, b):
 @register.filter()
 def lookup(value, arg):
     return value.get(arg)
+
+@register.filter()
+def rnd(value):
+    return round(float(value))
