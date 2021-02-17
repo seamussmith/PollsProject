@@ -17,7 +17,7 @@ class Poll(models.Model):
             choice = Choice.new(question, new_uuid)
             choice.save()
         return Poll(
-            question = question,
+            question = name,
             uuid = new_uuid
         )
     def get_choices(self):
