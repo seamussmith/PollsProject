@@ -68,28 +68,25 @@ def placeholder(request):
 
 @require_http_methods(["POST"])
 def poll_vote(request):
-    # TODO: I know you will not forgive me future me, but there is ALOT of spaghetti you have to clean up... 
     if request.session.get("votes") is None: # if there is no storage for votes...
         request.session["votes"] = {}
     body = request.POST
     # Get the uuid of the poll and the user's choice
-    uuid = body.get("uuid")
+    poll_uuid = body.get("uuid")
     choice_id = body.get("choice")
-    prev_choice = request.session["votes"].get(uuid) # Grab the user's previous vote for this poll
-    same_vote = request.session["votes"].get(uuid) == choice_id
-    # Query the database for the poll
+    prev_choice_id = request.session["votes"].get(poll_uuid) # Grab the user's previous vote for this poll
+    is_same_vote = request.session["votes"].get(poll_uuid) == choice_id
+
     # Increment the choice that the user chose by 1
-    if uuid in request.session["votes"]: # If the user already voted on this poll
-        prev = Choice.objects.get(uuid=prev_choice)
+    if poll_uuid in request.session["votes"]: # If the user already voted on this poll
+        prev = Choice.objects.get(uuid=prev_choice_id) # Grab previous choice from database
         prev.votes -= 1 # Decrement the user's previous choice
         prev.save()
-        request.session["votes"].pop(uuid) # Remove the record of the vote
-    if not same_vote: # If this was a different choice
-        choice = Choice.objects.get(uuid=choice_id)
+        request.session["votes"].pop(poll_uuid) # Remove the record of the vote from session
+    if not is_same_vote: # If this was a different choice
+        choice = Choice.objects.get(uuid=choice_id) # Grab choice from database
         choice.votes += 1 # Increment the vote of the choice by 1
         choice.save()
-        request.session["votes"][uuid] = choice_id # Save the vote to the user's session
-    # Save and return the new data for the poll as a JSON string
-    data = Poll.objects.get(uuid=uuid).to_dict()
-    print(request.session["votes"])
-    return HttpResponse(json.dumps(data))
+        request.session["votes"][poll_uuid] = choice_id # Save the vote to the user's session
+    data = Poll.objects.get(uuid=poll_uuid).to_dict() # Grab poll data from database
+    return HttpResponse(json.dumps(data)) # Return poll data as JSON string
