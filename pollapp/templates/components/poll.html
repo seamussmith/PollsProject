@@ -19,7 +19,7 @@ delay: Animation delay (defaults to 0)
         name="choice"
         value="{{ choice.uuid }}"
         data-votes="{{ choice.votes }}"
-        data-votes-formatted="({{ choice.precent }}%) {{ choice.votes|intcomma }}"
+        data-votes-formatted="({{ choice.votes|div:total|mul:100 }}%) {{ choice.votes|intcomma }}"
         data-choice-text="{{ choice.name }}"
         class="poll__choice {% if vote == choice.uuid %}poll__choice--selected{% endif %}"
         style="--precentage: {{choice.precent}}%;"

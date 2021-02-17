@@ -11,13 +11,7 @@ from django import forms
 
 # Create your views here.
 def index(request):
-    # TODO: Refactor POST handle into different view
-    # Else, assume it is a user trying to access the website
     polls = list(reversed([i.to_dict() for i in Poll.objects.all()])) # Grab the first 20 polls you can get from the database
-    for i in polls:
-        total = reduce(lambda x, y: x + y["votes"], i["choices"], 0) or 1
-        for j in i["choices"]:
-            j["precent"] = round(j["votes"]/total * 100)
     return render(request, "pages/index.html", context={
         "polls": polls,
         "votes": request.session.get("votes")
