@@ -17,8 +17,8 @@
 }
 
 .navbar__ulist-item--title {
-    padding: 0 0px;
-    margin: 0;
+    padding: 0 20px;
+    margin: 0 0;
 }
 
 .navbar__title:hover {
@@ -35,7 +35,7 @@
     transition: all 0.10s;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1080px) {
     .navbar__link {
         font-size: 18pt;
         padding: 0 2px;
