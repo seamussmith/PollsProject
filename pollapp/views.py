@@ -68,25 +68,28 @@ def placeholder(request):
 
 @require_http_methods(["POST"])
 def poll_vote(request):
+    # TODO: I know you will not forgive me future me, but there is ALOT of spaghetti you have to clean up... 
     if request.session.get("votes") is None: # if there is no storage for votes...
         request.session["votes"] = {}
     body = request.POST
     # Get the uuid of the poll and the user's choice
     uuid = body.get("uuid")
-    choice = int(body.get("choice"))
+    choice_id = body.get("choice")
     prev_choice = request.session["votes"].get(uuid) # Grab the user's previous vote for this poll
+    same_vote = request.session["votes"].get(uuid) == choice_id
     # Query the database for the poll
-    poll = Poll.objects.get(uuid=uuid)
     # Increment the choice that the user chose by 1
     if uuid in request.session["votes"]: # If the user already voted on this poll
-        poll.inc_vote(request.session["votes"][uuid], -1) # Decrement the user's previous choice
-        poll.save()
+        prev = Choice.objects.get(uuid=prev_choice)
+        prev.votes -= 1 # Decrement the user's previous choice
+        prev.save()
         request.session["votes"].pop(uuid) # Remove the record of the vote
-    if choice != prev_choice: # If this was a different choice
-        poll.inc_vote(choice, 1) # Increment the vote of the choice by 1
-        poll.save()
-        request.session["votes"][uuid] = choice # Save the vote to the user's session
+    if not same_vote: # If this was a different choice
+        choice = Choice.objects.get(uuid=choice_id)
+        choice.votes += 1 # Increment the vote of the choice by 1
+        choice.save()
+        request.session["votes"][uuid] = choice_id # Save the vote to the user's session
     # Save and return the new data for the poll as a JSON string
-    data = poll.to_dict()
-    data["unvoted"] = prev_choice == choice # Say if this was a vote or unvote
+    data = Poll.objects.get(uuid=uuid).to_dict()
+    print(request.session["votes"])
     return HttpResponse(json.dumps(data))
