@@ -22,7 +22,7 @@ delay: Animation delay (defaults to 0)
         data-votes-formatted="({{ choice.votes|div:total|mul:100|rnd }}%) {{ choice.votes|intcomma }}"
         data-choice-text="{{ choice.name }}"
         class="poll__choice {% if vote == choice.uuid %}poll__choice--selected{% endif %}"
-        style="--precentage: {{choice.precent}}%;"
+        style="--precentage: {{ choice.votes|div:total|mul:100|rnd }}%;"
         onclick="SendVote(this); event.stopPropagation()">{{ choice.name }}</button>
         {% endfor %}
         <input type="hidden" name="uuid" value="{{ poll.uuid }}">
