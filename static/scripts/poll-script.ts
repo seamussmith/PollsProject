@@ -3,7 +3,9 @@ interface Poll // Interface for Poll object recieved by server
 {
     name: string
     choices: Array<{
-        name: string
+        question: string
+        poll_uuid: string
+        uuid: string
         votes: number
     }>
     uuid: string
@@ -31,10 +33,11 @@ function SendVote(self: HTMLElement): void
         if ($self.attr("value") !== $prev.attr("value"))
             $self.toggleClass("poll__choice--selected");
         let data: Poll = JSON.parse(result) // Parse JSON sent by server, interface data with Poll interface
+        console.log(data)
         let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1
         // Update every poll button's data with data sent by server
         $form.find(".poll__choice").each((i, $choice: HTMLInputElement) => {
-            let choice = data.choices[parseInt($choice.value)]
+            let choice = data.choices.find((e) => e.uuid === $choice.value )
             let votes = choice.votes
             let precentage = votes/totalVotes * 100
             $choice.dataset.votes = votes.toString()
