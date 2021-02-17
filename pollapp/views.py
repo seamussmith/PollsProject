@@ -81,13 +81,13 @@ def poll_vote(request):
     # Increment the choice that the user chose by 1
     if poll_uuid in request.session["votes"]: # If the user already voted on this poll
         prev = Choice.objects.get(uuid=prev_choice_id) # Grab previous choice from database
-        prev.inc_vote() # Decrement the user's previous choice
+        prev.dec_vote() # Decrement the user's previous choice
         prev.save()
         request.session["votes"].pop(poll_uuid) # Remove the record of the vote from session
     
     if not is_same_vote: # If this was a different choice
         choice = Choice.objects.get(uuid=choice_id) # Grab choice from database
-        choice.dec_vote() # Increment the vote of the choice by 1
+        choice.inc_vote() # Increment the vote of the choice by 1
         choice.save()
         request.session["votes"][poll_uuid] = choice_id # Save the vote to the user's session
     
