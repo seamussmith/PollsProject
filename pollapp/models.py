@@ -4,24 +4,26 @@ from uuid import uuid4
 from datetime import date
 import json
 
-# TODO: Uhhh, future me, figure out how the hell these models work.
-# TODO: I am wayyy to sleep deprived rn...
-
 class Poll(models.Model):
     question = models.TextField()
     uuid = models.TextField(primary_key=True)
+
+    # Method for creating a new poll
+    # Method and not constructor because I did not want to override the default constructor
     @staticmethod
-    def new(name, questions):
-        new_uuid = str(uuid4())
-        for question in questions:
-            choice = Choice.new(question, new_uuid)
+    def new(name, choices):
+        new_uuid = str(uuid4()) # Generate UUID
+        for choice in choices: # Create choice for each choice
+            choice = Choice.new(choice, new_uuid)
             choice.save()
-        return Poll(
+        return Poll( # Return poll object (this is not saved to the database)
             question = name,
             uuid = new_uuid
         )
+    # Grab all the choices for the poll
     def get_choices(self):
         return Choice.objects.all().filter(poll_uuid=self.uuid)
+    # Convert poll to dictionary data
     def to_dict(self):
         choices = self.get_choices()
         return {
@@ -29,9 +31,10 @@ class Poll(models.Model):
             "uuid": self.uuid,
             "choices": [i.to_dict() for i in choices]
         }
+    # Reset each choice's votes
     def reset_poll(self):
         for choice in self.get_choices():
-            choice.dec_vote()
+            choice.reset_vote()
 
 class Choice(models.Model):
     name = models.TextField()
@@ -46,6 +49,7 @@ class Choice(models.Model):
             uuid = str(uuid4()),
             votes = 0
         )
+    # Convert choice data to a dictionary
     def to_dict(self):
         return {
             "name": self.name,
@@ -53,6 +57,7 @@ class Choice(models.Model):
             "uuid": self.uuid,
             "poll_uuid": self.poll_uuid,
         }
+    # Use these functions to modify the choice's votes in a safe way
     def inc_vote(self):
         self.votes += 1
     def dec_vote(self):
