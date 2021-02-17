@@ -8,7 +8,7 @@ import json
 # TODO: I am wayyy to sleep deprived rn...
 
 class Poll(models.Model):
-    name = models.TextField()
+    question = models.TextField()
     uuid = models.TextField(primary_key=True)
     @staticmethod
     def new(name, questions):
@@ -17,7 +17,7 @@ class Poll(models.Model):
             choice = Choice.new(question, new_uuid)
             choice.save()
         return Poll(
-            name = name,
+            question = question,
             uuid = new_uuid
         )
     def get_choices(self):
@@ -25,7 +25,7 @@ class Poll(models.Model):
     def to_dict(self):
         choices = self.get_choices()
         return {
-            "name": self.name,
+            "question": self.question,
             "uuid": self.uuid,
             "choices": [i.to_dict() for i in choices]
         }
@@ -34,21 +34,21 @@ class Poll(models.Model):
             choice.dec_vote()
 
 class Choice(models.Model):
-    question = models.TextField()
+    name = models.TextField()
     votes = models.IntegerField()
     uuid = models.TextField(primary_key=True)
     poll_uuid = models.TextField()
     @staticmethod
-    def new(question, poll_uuid):
+    def new(name, poll_uuid):
         return Choice(
-            question = question,
+            name = name,
             poll_uuid = poll_uuid,
             uuid = str(uuid4()),
             votes = 0
         )
     def to_dict(self):
         return {
-            "question": self.question,
+            "name": self.name,
             "votes": self.votes,
             "uuid": self.uuid,
             "poll_uuid": self.poll_uuid,
