@@ -10,6 +10,7 @@ from django import forms
 
 # Create your views here.
 def index(request):
+    # TODO: Refactor POST handle into different view
     if not request.session.get("votes"): # if there is no storage for votes...
         request.session["votes"] = {}
     if request.POST: # If the request is a POST requset, assuming this is a vote...
