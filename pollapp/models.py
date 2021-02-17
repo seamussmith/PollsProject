@@ -23,13 +23,23 @@ class Poll(models.Model):
     # Grab all the choices for the poll
     def get_choices(self):
         return Choice.objects.all().filter(poll_uuid=self.uuid)
+    # Grab all choices as a dictionary with their uuid as the keys
+    # ! Probably not a good idea to use...
+    def get_choices_dict(self):
+        result = {}
+        for choice in self.get_choices():
+            result[choice.uuid] = {
+                "name": choice.name,
+                "votes": choice.votes,
+                "poll_uuid": choice.poll_uuid
+            }
+        return result
     # Convert poll to dictionary data
     def to_dict(self):
-        choices = self.get_choices()
         return {
             "question": self.question,
             "uuid": self.uuid,
-            "choices": [i.to_dict() for i in choices]
+            "choices": [i.to_dict() for i in self.get_choices()]
         }
     # Reset each choice's votes
     def reset_poll(self):
