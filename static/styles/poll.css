@@ -112,6 +112,7 @@
     outline: solid var(--button-color-primary) 2px;
     background-color: var(--button-color-primary-dark);
     border-radius: 0;
+    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     /* padding-left: 2%; */
