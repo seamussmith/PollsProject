@@ -7,49 +7,23 @@ import json
 
 # Create your models here.
 # ? Maybe make an abstract class with these implmentations?
+
 class Poll(models.Model):
     name = models.TextField()
-    choices = models.TextField()
     uuid = models.TextField(primary_key=True)
+    def get_choices(uuid):
+        raise NotImplementedError()
 
-    # I chose to make a static new method because I dont want to override the constructor
-    # Returns a new Poll database object
+class Choice(models.Model):
+    question = models.TextField()
+    votes = models.IntegerField()
+    uuid = models.TextField(primary_key=True)
+    poll_uuid = models.TextField()
     @staticmethod
-    def new(data):
-        return Poll(
-            name = data["name"],
-            choices = json.dumps(data["choices"]),
-            uuid = data.get("uuid") or str(uuid4()),
+    def new(question, poll_uuid):
+        return Choice(
+            question = question,
+            poll_uuid = poll_uuid,
+            uuid = str(uuid4()),
+            votes = 0
         )
-
-    # Returns data as a dict
-    def to_dict(self):
-        return {
-            "name": self.name,
-            "choices": json.loads(self.choices),
-            "uuid": self.uuid
-        }
-    
-    # Update Polls using a dict with new data
-    def update(self, new_data):
-        stored_data = self.to_dict()
-        stored_data.update(new_data)
-        self.name = stored_data["name"]
-        self.choices = json.dumps(stored_data["choices"])
-        self.uuid = stored_data["uuid"]
-    
-    # Increment the choice's votes by the value given.
-    def inc_vote(self, index, value):
-        data = self.to_dict()
-        if type(index) is int:
-            data["choices"][index]["votes"] += value
-        else:
-            raise TypeError("Index can only be of types (int)")
-        self.update(data)
-
-    # Reset all votes on this poll
-    def reset(self):
-        data = self.to_dict()
-        for i in data["choices"]:
-            i["votes"] = 0
-        self.update(data)
