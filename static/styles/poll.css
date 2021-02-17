@@ -25,15 +25,17 @@
     animation: pop 0.5s ease forwards;
 }
 
-.poll:hover {
-    background-color: var(--layer-4);
-    cursor: pointer;
-}
+@media (min-width: 780px)
+{
+    .poll:hover {
+        background-color: var(--layer-4);
+        cursor: pointer;
+    }
 
-.poll:active {
-    background-color: var(--layer-3);
+    .poll:active {
+        background-color: var(--layer-3);
+    }
 }
-
 @media (max-width: 1280px)
 {
     .poll {
@@ -151,10 +153,13 @@
     animation: fadein 0.25s linear;
 }
 
-.poll--visible:hover {
-    background-color: var(--layer-3);
+@media (min-width: 780px) {
+    .poll--visible:hover {
+        background-color: var(--layer-3);
+    }
+    
+    .poll--visible:active {
+        background-color: var(--layer-2);
+    }
 }
 
-.poll--visible:active {
-    background-color: var(--layer-2);
-}
