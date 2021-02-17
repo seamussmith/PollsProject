@@ -88,4 +88,4 @@ def grab_polls(request):
 
 def placeholder(request):
     # TODO: Add a proper placeholder page (404?)
-    return render(request, "PLACEHOLDER", context={})
+    return HttpResponse("PLACEHOLDER")
