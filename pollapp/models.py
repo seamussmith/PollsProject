@@ -29,6 +29,9 @@ class Poll(models.Model):
             "uuid": self.uuid,
             "choices": [i.to_dict() for i in choices]
         }
+    def reset_poll(self):
+        for choice in self.get_choices():
+            choice.dec_vote()
 
 class Choice(models.Model):
     question = models.TextField()
@@ -50,3 +53,9 @@ class Choice(models.Model):
             "uuid": self.uuid,
             "poll_uuid": self.poll_uuid,
         }
+    def inc_vote(self):
+        self.votes += 1
+    def dec_vote(self):
+        self.votes -= 1
+    def reset_poll(self):
+        self.votes = 0
