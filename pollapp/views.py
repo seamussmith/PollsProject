@@ -70,6 +70,7 @@ def placeholder(request):
 def poll_vote(request):
     if request.session.get("votes") is None: # if there is no storage for votes...
         request.session["votes"] = {}
+    
     body = request.POST
     # Get the uuid of the poll and the user's choice
     poll_uuid = body.get("uuid")
@@ -83,10 +84,12 @@ def poll_vote(request):
         prev.inc_vote() # Decrement the user's previous choice
         prev.save()
         request.session["votes"].pop(poll_uuid) # Remove the record of the vote from session
+    
     if not is_same_vote: # If this was a different choice
         choice = Choice.objects.get(uuid=choice_id) # Grab choice from database
         choice.dec_vote() # Increment the vote of the choice by 1
         choice.save()
         request.session["votes"][poll_uuid] = choice_id # Save the vote to the user's session
+    
     data = Poll.objects.get(uuid=poll_uuid).to_dict() # Grab poll data from database
     return HttpResponse(json.dumps(data)) # Return poll data as JSON string
