@@ -11,8 +11,25 @@ import json
 class Poll(models.Model):
     name = models.TextField()
     uuid = models.TextField(primary_key=True)
-    def get_choices(uuid):
-        raise NotImplementedError()
+    @staticmethod
+    def new(name, questions):
+        new_uuid = str(uuid4())
+        for question in questions:
+            choice = Choice.new(question, new_uuid)
+            choice.save()
+        return Poll(
+            name = name,
+            uuid = new_uuid
+        )
+    def get_choices(self, uuid):
+        return Choice.objects.all(uuid=uuid)
+    def to_dict(self):
+        choices = Choice.objects.all(uuid=self.uuid)
+        return {
+            "name": self.name,
+            "uuid": self.uuid,
+            "choices": [i.to_dict() for i in choices]
+        }
 
 class Choice(models.Model):
     question = models.TextField()
@@ -27,3 +44,10 @@ class Choice(models.Model):
             uuid = str(uuid4()),
             votes = 0
         )
+    def to_dict(self):
+        return {
+            "question": self.question,
+            "votes": self.votes,
+            "uuid": self.uuid,
+            "poll_uuid": self.poll_uuid,
+        }
