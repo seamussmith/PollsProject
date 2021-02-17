@@ -7,7 +7,6 @@ interface Poll // Interface for Poll object recieved by server
         votes: number
     }>
     uuid: string
-    unvoted: boolean
 }
 
 // Function called by every vote button when clicked
@@ -28,9 +27,10 @@ function SendVote(self: HTMLElement): void
     })
     .done((result) => { // On a successful vote...
         $form.children().prop("disabled", false) // Re-enable form children
-        $form.children().removeClass("poll__choice--selected")
+        let $prev = $form.children(".poll__choice--selected").toggleClass("poll__choice--selected")
+        if ($self.attr("value") !== $prev.attr("value"))
+            $self.toggleClass("poll__choice--selected");
         let data: Poll = JSON.parse(result) // Parse JSON sent by server, interface data with Poll interface
-        console.log(data)
         let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1
         // Update every poll button's data with data sent by server
         $form.find(".poll__choice").each((i, $choice: HTMLInputElement) => {
@@ -42,8 +42,6 @@ function SendVote(self: HTMLElement): void
             $choice.style.setProperty("--precentage", `${precentage}%`)
         })
         $form.addClass("poll__form--voted")
-        if (!data.unvoted)
-            $self.addClass("poll__choice--selected")
     })
     .fail((response, err, e) => { // On fail...
         // Alert user with alert prompt
