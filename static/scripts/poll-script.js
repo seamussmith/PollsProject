@@ -16,12 +16,11 @@ function SendVote(self) {
         .done((result) => {
         $form.children().prop("disabled", false); // Re-enable form children
         let $prev = $form.children(".poll__choice--selected").toggleClass("poll__choice--selected");
-        if ($self.attr("value") !== $prev.attr("value"))
+        if ($self.attr("value") !== $prev.attr("value")) // Vote highlight switching thing
             $self.toggleClass("poll__choice--selected");
         let data = JSON.parse(result); // Parse JSON sent by server, interface data with Poll interface
-        console.log(data);
-        let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1;
-        // Update every poll button's data with data sent by server
+        let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1; // Calculate the total amount of votes.
+        // Update every poll button's data with data sent by server                       // If 0, set to 1 to prevent division by 0
         $form.find(".poll__choice").each((i, $choice) => {
             let choice = data.choices.find((e) => e.uuid === $choice.value);
             let votes = choice.votes;
