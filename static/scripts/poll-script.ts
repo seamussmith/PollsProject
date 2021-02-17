@@ -31,7 +31,7 @@ function SendVote(self: HTMLElement): void
         $form.children().prop("disabled", false) // Re-enable form children
         let $prev = $form.children(".poll__choice--selected").toggleClass("poll__choice--selected")
         if ($self.attr("value") !== $prev.attr("value"))
-            $self.toggleClass("poll__choice--selected");
+            $self.toggleClass("poll__choice--selected")
         let data: Poll = JSON.parse(result) // Parse JSON sent by server, interface data with Poll interface
         console.log(data)
         let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1
