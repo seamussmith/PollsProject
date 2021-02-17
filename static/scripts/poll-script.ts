@@ -1,9 +1,9 @@
 
 interface Poll // Interface for Poll object recieved by server
 {
-    name: string
+    question: string
     choices: Array<{
-        question: string
+        name: string
         poll_uuid: string
         uuid: string
         votes: number
