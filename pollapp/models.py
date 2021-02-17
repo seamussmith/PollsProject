@@ -4,9 +4,8 @@ from uuid import uuid4
 from datetime import date
 import json
 
-
-# Create your models here.
-# ? Maybe make an abstract class with these implmentations?
+# TODO: Uhhh, future me, figure out how the hell these models work.
+# TODO: I am wayyy to sleep deprived rn...
 
 class Poll(models.Model):
     name = models.TextField()
