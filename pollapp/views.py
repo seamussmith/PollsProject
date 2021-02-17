@@ -49,10 +49,7 @@ def submit_poll(request):
             })
         choices = body.getlist("choice[]")
         name = body.get("name")
-        new_poll = Poll.new({
-            "name": name,
-            "choices": [{"text": i, "votes": 0} for i in choices if i]
-        })
+        new_poll = Poll.new(name, choices)
         new_poll.save()
     return render(request, "pages/create-poll.html", context={
         "errors": []

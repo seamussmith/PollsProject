@@ -20,10 +20,10 @@ delay: Animation delay (defaults to 0)
         value="{{ forloop.counter0 }}"
         data-votes="{{ choice.votes }}"
         data-votes-formatted="({{ choice.precent }}%) {{ choice.votes|intcomma }}"
-        data-choice-text="{{ choice.text }}"
+        data-choice-text="{{ choice.question }}"
         class="poll__choice {% if vote == forloop.counter0 %}poll__choice--selected{% endif %}"
         style="--precentage: {{choice.precent}}%;"
-        onclick="SendVote(this); event.stopPropagation()">{{ choice.text }}</button>
+        onclick="SendVote(this); event.stopPropagation()">{{ choice.question }}</button>
         {% endfor %}
         <input type="hidden" name="uuid" value="{{ poll.uuid }}">
     </form>

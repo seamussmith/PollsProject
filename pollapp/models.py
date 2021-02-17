@@ -21,14 +21,14 @@ class Poll(models.Model):
             name = name,
             uuid = new_uuid
         )
-    def get_choices(self, uuid):
-        return Choice.objects.all(uuid=uuid)
+    def get_choices(self):
+        return Choice.objects.get(uuid=self.uuid)
     def to_dict(self):
-        choices = Choice.objects.all(uuid=self.uuid)
+        choices = [i.to_dict() for i in Choice.objects.all() if i.poll_uuid == self.uuid]
         return {
             "name": self.name,
             "uuid": self.uuid,
-            "choices": [i.to_dict() for i in choices]
+            "choices": choices
         }
 
 class Choice(models.Model):
