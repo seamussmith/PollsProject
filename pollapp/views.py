@@ -11,6 +11,8 @@ from django import forms
 
 # Create your views here.
 def index(request):
+    if request.session.get("votes") is None: # if there is no storage for votes...
+        request.session["votes"] = {}
     polls = list(reversed([i.to_dict() for i in Poll.objects.all()])) # Grab the first 20 polls you can get from the database
     return render(request, "pages/index.html", context={
         "polls": polls,
