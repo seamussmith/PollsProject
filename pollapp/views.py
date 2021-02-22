@@ -1,8 +1,6 @@
 from django.http.response import Http404, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
-#from django.db.backends.sqlite3 import *
-from django.db.backends import sqlite3
 from .models import *
 import json
 from functools import reduce
