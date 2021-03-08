@@ -1,5 +1,5 @@
 
-interface Poll // Interface for Poll object recieved by server
+interface IPoll // Interface for Poll object recieved by server
 {
     question: string
     choices: Array<{
@@ -32,7 +32,7 @@ function SendVote(self: HTMLElement): void
         let $prev = $form.children(".poll__choice--selected").toggleClass("poll__choice--selected")
         if ($self.attr("value") !== $prev.attr("value")) // Vote highlight switching thing
             $self.toggleClass("poll__choice--selected")
-        let data: Poll = JSON.parse(result) // Parse JSON sent by server, interface data with Poll interface
+        let data: IPoll = JSON.parse(result) // Parse JSON sent by server, interface data with Poll interface
         let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1 // Calculate the total amount of votes.
         // Update every poll button's data with data sent by server                       // If 0, set to 1 to prevent division by 0
         $form.find(".poll__choice").each((i, $choice: HTMLInputElement) => {
