@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     "bab8ffea-3772-476b-adcf-0b088ddbadaa.id.repl.co",
 ]
 
+X_FRAME_OPTIONS = "*"
 
 # Application definition
 
