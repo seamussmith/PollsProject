@@ -1,11 +1,12 @@
 from typing import Type
 from django.db import models
 from uuid import uuid4
-from datetime import date
+from datetime import date, datetime
 import json
 
 class Poll(models.Model):
     question = models.TextField()
+    pub_date = models.DateTimeField('date published')
     uuid = models.TextField(primary_key=True)
 
     # Method for creating a new poll
@@ -13,13 +14,17 @@ class Poll(models.Model):
     @staticmethod
     def new(name, choices):
         new_uuid = str(uuid4()) # Generate UUID
-        for choice in choices: # Create choice for each choice
-            choice = Choice.new(choice, new_uuid)
-            choice.save()
-        return Poll( # Return poll object (this is not saved to the database)
+        new_poll = Poll( # Return poll object (this is not saved to the database)
             question = name,
-            uuid = new_uuid
+            uuid = new_uuid,
+            pub_date = datetime.now()
         )
+        new_poll.save()
+        for choice in choices: # Create choice for each choice
+            choice = Choice.new(choice, new_poll)
+            choice.save()
+        new_poll.save()
+        return new_poll
     # Grab all the choices for the poll
     def get_choices(self):
         return Choice.objects.all().filter(poll_uuid=self.uuid)
@@ -50,7 +55,7 @@ class Choice(models.Model):
     name = models.TextField()
     votes = models.IntegerField()
     uuid = models.TextField(primary_key=True)
-    poll_uuid = models.TextField()
+    poll_uuid = models.ForeignKey(Poll, on_delete=models.CASCADE)
     @staticmethod
     def new(name, poll_uuid):
         return Choice(
@@ -65,7 +70,7 @@ class Choice(models.Model):
             "name": self.name,
             "votes": self.votes,
             "uuid": self.uuid,
-            "poll_uuid": self.poll_uuid,
+            "poll_uuid": self.poll_uuid.uuid,
         }
     # Use these functions to modify the choice's votes in a safe way
     def inc_vote(self):
