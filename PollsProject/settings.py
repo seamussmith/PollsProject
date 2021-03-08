@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "localhost",
     "pollsproject.seamussmith.repl.co",
-    "bab8ffea-3772-476b-adcf-0b088ddbadaa.id.repl.co",
+    "f0c0b197-dccc-4cc6-811b-99f8b10d1c32.id.repl.co",
 ]
 
 X_FRAME_OPTIONS = "*"
