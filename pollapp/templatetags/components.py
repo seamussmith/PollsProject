@@ -7,5 +7,6 @@ def CreatePoll(poll, vote, delay=0):
         "delay": delay,
         "poll": poll,
         "vote": vote,
-        "total": (reduce(lambda a, b: a + b["votes"], poll["choices"], 0) or 1)
+        "total": (reduce(lambda a, b: a + b["votes"], poll["choices"], 0) or 1),
+        "pub_date": poll["pub_date"].date()
     }
