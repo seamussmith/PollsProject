@@ -11,7 +11,6 @@ delay: Animation delay (defaults to 0)
 {% load humanize %}
 <div class="poll" style="animation-delay: {{ delay|mul:0.05 }}s;" onclick="TogglePollVisibility(this)">
     <h3 class="poll__title">{{ poll.question }}</h3>
-    <p>Submitted on {{ pub_date }}</p>
     <form action="{% url "pollapp:poll-vote" %}" method="POST" class="poll__form {% if vote is not None %}poll__form--voted{% endif %}" id="{{ poll.uuid }}">
         {% csrf_token %}
         {% for choice in poll.choices %}
@@ -28,4 +27,5 @@ delay: Animation delay (defaults to 0)
         {% endfor %}
         <input type="hidden" name="uuid" value="{{ poll.uuid }}">
     </form>
+    <p style="text-align:center;">Submitted on {{ pub_date }}</p>
 </div>
