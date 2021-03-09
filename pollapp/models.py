@@ -52,7 +52,9 @@ class Poll(models.Model):
         for choice in self.get_choices():
             choice.reset_vote()
     def __str__(self):
-        return json.dumps(self.to_dict())
+        data = self.to_dict()
+        data["pub_date"] = str(data["pub_date"]) # stringify pub_date
+        return json.dumps(data, indent=2, sort_keys=True)
 
 class Choice(models.Model):
     name = models.TextField()
