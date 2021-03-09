@@ -51,6 +51,8 @@ class Poll(models.Model):
     def reset_poll(self):
         for choice in self.get_choices():
             choice.reset_vote()
+    def __str__(self):
+        return json.dumps(self.to_dict())
 
 class Choice(models.Model):
     name = models.TextField()
