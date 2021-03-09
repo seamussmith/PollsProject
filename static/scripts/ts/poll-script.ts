@@ -27,12 +27,11 @@ function SendVote(self: HTMLElement): void
         data: `${$form.serialize()}&${$self.attr("name")}=${$self.attr("value")}`,
         url: $form.attr("action")
     })
-    .done((result) => { // On a successful vote...
+    .done((data: IPoll) => { // On a successful vote...
         $form.children().prop("disabled", false) // Re-enable form children
         let $prev = $form.children(".poll__choice--selected").toggleClass("poll__choice--selected")
         if ($self.attr("value") !== $prev.attr("value")) // Vote highlight switching thing
             $self.toggleClass("poll__choice--selected")
-        let data: IPoll = JSON.parse(result) // Parse JSON sent by server, interface data with Poll interface
         let totalVotes = data.choices.reduce((val, choice) => val + choice.votes, 0) || 1 // Calculate the total amount of votes.
         // Update every poll button's data with data sent by server                       // If 0, set to 1 to prevent division by 0
         $form.find(".poll__choice").each((i, $choice: HTMLInputElement) => {

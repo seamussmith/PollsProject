@@ -1,4 +1,4 @@
-from django.http.response import Http404, HttpResponse
+from django.http.response import Http404, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from .models import *
@@ -86,4 +86,4 @@ def poll_vote(request):
         request.session["votes"][poll_uuid] = choice_id # Save the vote to the user's session
     
     data = Poll.objects.get(uuid=poll_uuid).to_dict() # Grab poll data from database
-    return HttpResponse(json.dumps(data)) # Return poll data as JSON string
+    return JsonResponse(data) # Return poll data as JSON string
