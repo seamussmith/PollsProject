@@ -9,6 +9,7 @@ interface IPoll // Interface for Poll object recieved by server
         votes: number
     }>
     uuid: string
+    pub_date: string // ISO-8601 timestamp
 }
 
 // Function called by every vote button when clicked
