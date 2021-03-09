@@ -44,7 +44,8 @@ class Poll(models.Model):
         return {
             "question": self.question,
             "uuid": self.uuid,
-            "choices": [i.to_dict() for i in self.get_choices()]
+            "choices": [i.to_dict() for i in self.get_choices()],
+            "pub_date": self.pub_date
         }
     # Reset each choice's votes
     def reset_poll(self):
