@@ -27,3 +27,6 @@ npm-debug.log
 
 #vscode
 .vscode
+
+# compiled JS
+/static/scrips/js/*
