@@ -2,6 +2,6 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "ES6",
-        "rootDir": "static/scripts"
+        "rootDir": "static/scripts/ts"
     }
 }
