@@ -82,5 +82,7 @@ class Choice(models.Model):
         self.votes += 1
     def dec_vote(self):
         self.votes -= 1
-    def reset_poll(self):
+    def reset_vote(self):
         self.votes = 0
+    def __str__(self):
+        return json.dumps(self.to_dict(), indent=2, sort_keys=True)
