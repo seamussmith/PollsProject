@@ -27,7 +27,7 @@ class Poll(models.Model):
         return new_poll
     # Grab all the choices for the poll
     def get_choices(self):
-        return Choice.objects.all().filter(poll_uuid=self.uuid)
+        return self.choice_set.all()
     # Grab all choices as a dictionary with their uuid as the keys
     # ! Probably not a good idea to use...
     def get_choices_dict(self):
