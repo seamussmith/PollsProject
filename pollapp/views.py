@@ -45,7 +45,8 @@ def submit_poll(request):
                 "errors": errors
             })
         choices = body.getlist("choice[]")
-        choices = [i for i in choices if not i.isspace()]
+        choices = [i for i in choices if not i.isspace() and i != ""]
+        print(choices)
         name = body.get("name")
         new_poll = Poll.new(name, choices)
         new_poll.save()
