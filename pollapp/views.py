@@ -22,13 +22,16 @@ def contact(request):
 
 def validate_poll_form(data):
     errors = []
-    if data.get("name") == "":
+    if data.get("name").isspace():
         errors.append("Form must have a name")
     if len(data.getlist("choice[]")) == 0:
         errors.append("Poll must have at least one choice")
-    for i, choice in enumerate(data.getlist("choices")):
+    for i, choice in enumerate(data.getlist("choice[]")):
+        print(choice)
         if len(choice) > 20:
             errors.append(f"Choice {i+1} must be less than 40 characters long")
+        if choice.isspace():
+            errors.append(f"Choice {i+1} must not be whitespace")
     if len(data.get("name")) > 100:
         errors.append(f"Question must be less than 100 characters long")
     return errors
