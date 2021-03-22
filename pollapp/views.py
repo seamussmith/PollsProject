@@ -74,6 +74,8 @@ def poll_vote(request):
     # Get the uuid of the poll and the user's choice
     poll_uuid = body.get("uuid")
     choice_id = body.get("choice")
+    if None in (poll_uuid, choice_id):
+        raise Http404()
     prev_choice_id = request.session["votes"].get(poll_uuid) # Grab the user's previous vote for this poll
     is_same_vote = request.session["votes"].get(poll_uuid) == choice_id
 
