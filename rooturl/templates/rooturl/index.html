@@ -1,0 +1,23 @@
+{% extends "pollapp/layouts/base.html" %}
+{% load static %}
+{% block head %}
+    <title>The Polls App 🗳</title>
+    <link rel="stylesheet" href="{% static "styles/rooturl.css" %}">
+{% endblock head %}
+{% block body %}
+    <div class="background">
+        <div class="center-prompt">
+            <div class="center-prompt__section">
+                <h1>The Polls App</h1> 
+            </div>
+            <div class="center-prompt__section">
+                <h2>"Do our polls or we'll take your souls"</h2>
+
+            </div>
+            <div class="center-prompt__section">
+                <button>Join democracy</button>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+
