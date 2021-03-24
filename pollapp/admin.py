@@ -26,6 +26,7 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [
         ChoiceInline
     ]
+    search_fields = ["question"]
 
 admin.site.register(Poll, QuestionAdmin)
 admin.site.register(Choice)
