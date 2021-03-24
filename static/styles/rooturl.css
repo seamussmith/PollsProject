@@ -1,6 +1,10 @@
 
 .background {
+    background-color: rgba(42, 42, 46, 0.76);
+    background-blend-mode: multiply;
     background-image: url("https://i.kym-cdn.com/entries/icons/mobile/000/028/497/palp.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
