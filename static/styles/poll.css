@@ -9,20 +9,17 @@
 
 .poll {
     background-color: var(--layer-2);
-    transform: scale(0);
-    border-radius: 20px;
+    /* transform: scale(0); */
     transition: 0.25s;
     /* border: 1px solid red; */
-    box-shadow: 0px 0px 2px var(--shadow-color);
+    box-shadow: 0px 0px 5px var(--shadow-color);
     height: auto;
-    width: 440px;
+    width: 100%;
     margin: 10px 20px;
     padding: 20px;
-    display: flex;
-    align-self: flex-start;
-    flex-direction: column;
+    display: block;
     /* opacity: 0; */
-    animation: pop 0.5s ease forwards;
+    /* animation: pop 0.5s ease forwards; */
 }
 
 @media (min-width: 780px)
@@ -36,12 +33,12 @@
         background-color: var(--layer-3);
     }
 }
-@media (max-width: 1280px)
+/* @media (max-width: 1280px)
 {
     .poll {
         width: 37%;
     }
-}
+} */
 
 @media (max-width: 780px)
 {
@@ -51,59 +48,37 @@
     }
     .poll .poll__form {
         display: flex;
-        animation: none !important;
     }
     .poll-container {
         padding: 20px 20px;
     }
 }
 
-/* how does this work? WHY DOES THIS WORK? HAS I EVER WORK? */
-/* use outline, nerd */
-
-/* Might replace with a poll results thingy, kinda like twitter: https://blog.thesocialms.com/wp-content/uploads/2015/12/eventbrite-example-Twitter-polls.png */
-/* Could be done with the :before and :after elements */
-/* .poll__highlighted {
-    position: relative;
-}
-
-.poll__highlighted:after {
-    content: "";
-    height: auto;
-    width: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    animation: fadein 0.3s;
-    position: absolute;
-    border: solid var(--poll-button-selected-color) 2px;
-} */
-
 .poll__form {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     transform-origin: top;
-    display: none;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5px;
 }
 
 .poll__choice {
     --precentage: 0%;
     font-size: 20px;
     padding: 5px;
-    margin: 5px;
+    margin: 5px 5px;
     border: 0;
     outline: 0;
-    border-radius: 10px;
     background-color: var(--button-color-primary);
+    width: 25%;
     /* color: var(--text-color-inverse); */
 }
 
 .poll__title {
-    text-align: center;
-    padding: 10px 0;
+    padding: 10px 5px;
 }
-
-/* TODO: Add modifier for polls that have been voted on */
 
 .poll__form--voted .poll__choice {
     text-align: left;
@@ -145,7 +120,6 @@
 }
 
 .poll__choice--selected {
-    /* TODO: Make proper color for selected poll */
     filter: hue-rotate(-84deg) !important;
 }
 
@@ -154,7 +128,36 @@
     animation: fadein 0.25s linear;
 }
 
-@media (min-width: 780px) {
+.poll--visible .poll__form .poll__choice-container {
+    top: 0;
+    height: 100%;
+    transition: 0.25s ease;
+}
+
+.poll__line {
+    background-color: white;
+    width: 50%;
+    height: 1px;
+    padding: 0;
+    margin: 5px 0;
+}
+
+@media (max-width: 780px) 
+{
+    .poll__line {
+        width: 100%;
+    }
+    
+    .poll__choice {
+        width: 100%;
+        margin: 0;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 780px) 
+{
+
     .poll--visible:hover {
         background-color: var(--layer-3);
     }
@@ -164,3 +167,27 @@
     }
 }
 
+.poll-misc {
+    font-style: italic;
+    color: var(--layer-3);
+}
+
+.poll-misc__info {
+    color: var(--text-color);
+    padding: 0;
+    font-size: 12pt;
+}
+
+.poll-misc__info-muted {
+    color: var(--text-color-muted);
+    padding: 0;
+    font-size: 6pt;
+}
+
+.poll__choice-container {
+    width: 100%;
+    height: 0;
+    position: relative;
+    top: -550px;
+    transition: 0.25s ease;
+}

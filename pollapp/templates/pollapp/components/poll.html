@@ -2,25 +2,28 @@
 {% load humanize %}
 <div class="poll" style="animation-delay: {{ delay|mul:0.05 }}s;" onclick="TogglePollVisibility(this)">
     <h3 class="poll__title">{{ poll.question }}</h3>
+    <div class="poll__line"></div>
     <form
     action="{% url "pollapp:poll-vote" %}"
     method="POST"
     class="poll__form {% if vote is not None %}poll__form--voted{% endif %}"
     id="{{ poll.uuid }}"
-    onclick="event.stopPropagation()">
+    >
         {% csrf_token %}
-        {% for choice in poll.choices %}
-        <button
-        type="button"
-        name="choice"
-        value="{{ choice.uuid }}"
-        data-votes="{{ choice.votes }}"
-        data-votes-formatted="({{ choice.votes|div:total|mul:100|rnd }}%) {{ choice.votes|intcomma }}"
-        data-choice-text="{{ choice.name }}"
-        class="poll__choice {% if vote == choice.uuid %}poll__choice--selected{% endif %}"
-        style="--precentage: {{ choice.votes|div:total|mul:100|rnd }}%;"
-        onclick="SendVote(this); event.stopPropagation()">{{ choice.name }}</button>
-        {% endfor %}
+        <div class="poll__choice-container">
+            {% for choice in poll.choices %}
+            <button
+            type="button"
+            name="choice"
+            value="{{ choice.uuid }}"
+            data-votes="{{ choice.votes }}"
+            data-votes-formatted="({{ choice.votes|div:total|mul:100|rnd }}%) {{ choice.votes|intcomma }}"
+            data-choice-text="{{ choice.name }}"
+            class="poll__choice {% if vote == choice.uuid %}poll__choice--selected{% endif %}"
+            style="--precentage: {{ choice.votes|div:total|mul:100|rnd }}%;"
+            onclick="SendVote(this); event.stopPropagation()">{{ choice.name }}</button>
+            {% endfor %}
+        </div>
         <input type="hidden" name="uuid" value="{{ poll.uuid }}">
     </form>
     <p style="text-align:center;">Submitted on {{ pub_date }}</p>
