@@ -55,6 +55,9 @@ class Poll(models.Model):
         return f"{self.question}:{'{'}{self.uuid}{'}'}"
     def was_published_recently(self):
         return timezone.now() - timedelta(days=1) <= self.pub_date <= timezone.now()
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published recently?'
 
 class Choice(models.Model):
     name = models.TextField()
