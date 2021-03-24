@@ -1,7 +1,7 @@
 from django.template.defaulttags import register
 from functools import reduce
 
-@register.inclusion_tag("components/poll.html")
+@register.inclusion_tag("pollapp/components/poll.html")
 def CreatePoll(poll, vote, delay=0):
     return {
         "delay": delay,

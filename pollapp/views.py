@@ -12,13 +12,13 @@ def index(request):
     if request.session.get("votes") is None: # if there is no storage for votes...
         request.session["votes"] = {}
     polls = list(reversed([i.to_dict() for i in Poll.objects.all()])) # Grab the first 20 polls you can get from the database
-    return render(request, "pages/index.html", context={
+    return render(request, "pollapp/pages/index.html", context={
         "polls": polls,
         "votes": request.session.get("votes")
     })
 
 def contact(request):
-    return render(request, "pages/contact.html", context={})
+    return render(request, "pollapp/pages/contact.html", context={})
 
 def validate_poll_form(data):
     errors = []
@@ -50,14 +50,14 @@ def submit_poll(request):
         name = body.get("name")
         new_poll = Poll.new(name, choices)
         new_poll.save()
-    return render(request, "pages/create-poll.html", context={
+    return render(request, "pollapp/pages/create-poll.html", context={
         "errors": []
     })
 
 def grab_polls(request):
     next_poll = int(request.GET.get("next"))
     polls = list(reversed([i.to_dict() for i in Poll.objects.all()]))[next_poll:next_poll+20]
-    return render(request, "pages/grab-polls.html", {
+    return render(request, "pollapp/pages/grab-polls.html", {
         "polls": polls
     })
 
