@@ -1,7 +1,7 @@
 from typing import Type
 from django.db import models
 from uuid import uuid4
-from datetime import date, datetime
+from datetime import date, datetime, timezone, timedelta
 import json
 
 class Poll(models.Model):
@@ -53,6 +53,8 @@ class Poll(models.Model):
             choice.reset_vote()
     def __str__(self):
         return f"{self.question}:{'{'}{self.uuid}{'}'}"
+    def was_published_recently(self):
+        return timezone.now() - timedelta(days=1) <= self.pub_date <= timezone.now()
 
 class Choice(models.Model):
     name = models.TextField()
