@@ -15,7 +15,9 @@
 
             </div>
             <div class="center-prompt__section">
-                <button>Join democracy</button>
+                <form action="{% url "pollapp:index" %}" method="get">
+                    <button>Join Democracy</button>
+                </form>
             </div>
         </div>
     </div>
