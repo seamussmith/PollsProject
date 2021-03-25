@@ -19,7 +19,7 @@
     align-items: center;
     padding: 5%;
     box-shadow: 0px 0px 1000px rgb(14, 13, 13);
-    border-radius: 50px;
+    border: 2px solid var(--layer-4);
     background-color: var(--layer-1);
 }
 

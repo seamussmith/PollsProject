@@ -18,7 +18,7 @@ function SendVote(self: HTMLElement): void
 {
     // Convert button and form to JQuery object
     let $self = $(self)
-    let $form = $(self.parentElement.parentElement)
+    let $form = $(self.parentElement)
     // Send Ajax request
     $.ajax({
         method: $form.attr("method"),
@@ -30,8 +30,7 @@ function SendVote(self: HTMLElement): void
     })
     .done((data: IPoll) => { // On a successful vote...
         $form.children().prop("disabled", false) // Re-enable form children
-        let $prev = $form.children(".poll__choice-container")
-                        .children(".poll__choice--selected")
+        let $prev = $form.children(".poll__choice--selected")
                         .toggleClass("poll__choice--selected")
         if ($self.attr("value") !== $prev.attr("value")) // Vote highlight switching thing
             $self.toggleClass("poll__choice--selected")

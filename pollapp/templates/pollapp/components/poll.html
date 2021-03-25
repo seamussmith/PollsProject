@@ -10,20 +10,18 @@
     id="{{ poll.uuid }}"
     >
         {% csrf_token %}
-        <div class="poll__choice-container">
-            {% for choice in poll.choices %}
-            <button
-            type="button"
-            name="choice"
-            value="{{ choice.uuid }}"
-            data-votes="{{ choice.votes }}"
-            data-votes-formatted="({{ choice.votes|div:total|mul:100|rnd }}%) {{ choice.votes|intcomma }}"
-            data-choice-text="{{ choice.name }}"
-            class="poll__choice {% if vote == choice.uuid %}poll__choice--selected{% endif %}"
-            style="--precentage: {{ choice.votes|div:total|mul:100|rnd }}%;"
-            onclick="SendVote(this); event.stopPropagation()">{{ choice.name }}</button>
-            {% endfor %}
-        </div>
+        {% for choice in poll.choices %}
+        <button
+        type="button"
+        name="choice"
+        value="{{ choice.uuid }}"
+        data-votes="{{ choice.votes }}"
+        data-votes-formatted="({{ choice.votes|div:total|mul:100|rnd }}%) {{ choice.votes|intcomma }}"
+        data-choice-text="{{ choice.name }}"
+        class="poll__choice {% if vote == choice.uuid %}poll__choice--selected{% endif %}"
+        style="--precentage: {{ choice.votes|div:total|mul:100|rnd }}%;"
+        onclick="SendVote(this); event.stopPropagation()">{{ choice.name }}</button>
+        {% endfor %}
         <input type="hidden" name="uuid" value="{{ poll.uuid }}">
     </form>
     <p style="text-align:center;">Submitted on {{ pub_date }}</p>
