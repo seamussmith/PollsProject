@@ -54,11 +54,6 @@ function SendVote(self: HTMLElement): void
     $form.children().prop("disabled", true) // After sending vote request, disable the form to prevent duplicate votes
 }
 
-function TogglePollVisibility(poll: HTMLElement)
-{
-    $(poll).toggleClass("poll--visible")
-}
-
 function GrabMorePolls(self: HTMLInputElement)
 {
     let $self: JQuery = $(self)
