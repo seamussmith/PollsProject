@@ -19,4 +19,14 @@
             </li>
         </ul>
     </nav>
+    <div class="hamborger">
+        <div class="hamborger__line"></div>
+        <div class="hamborger__line"></div>
+        <div class="hamborger__line"></div>
+    </div>
+    <script defer>
+        $(".hamborger").on("click", function() {
+            $(".navbar").toggleClass("navbar--mobile-visible")
+        })
+    </script>
 </header>

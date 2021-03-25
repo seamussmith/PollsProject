@@ -1,0 +1,38 @@
+
+.hamborger {
+    display: none;
+}
+
+@media (max-width: 780px)
+{
+    .hamborger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 45px;
+        height: 50px;
+        border: 2px solid var(--layer-4);
+        border-radius: 5px;
+        background-color: var(--layer-3);
+        z-index: 9999;
+        padding: 0 5px;
+    }
+    .hamborger:hover {
+        background-color: var(--layer-4);
+    }
+    .hamborger:active {
+        background-color: var(--layer-2);
+    }
+    .hamborger__line {
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        margin: 5px 0;
+        padding: 0;
+        border-radius: 5px;
+    }
+}
