@@ -34,12 +34,6 @@
         background-color: var(--layer-3);
     }
 } */
-/* @media (max-width: 1280px)
-{
-    .poll {
-        width: 37%;
-    }
-} */
 
 @media (max-width: 780px)
 {
@@ -74,6 +68,13 @@
     background-color: var(--button-color-primary);
     width: 25%;
     /* color: var(--text-color-inverse); */
+}
+
+@media (max-width: 1280px)
+{
+    .poll__choice {
+        width: 45%;
+    }
 }
 
 .poll__title {
