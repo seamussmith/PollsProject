@@ -24,5 +24,8 @@
         {% endfor %}
         <input type="hidden" name="uuid" value="{{ poll.uuid }}">
     </form>
-    <p style="text-align:center;">Submitted on {{ pub_date }}</p>
+    <span class="poll-misc">
+        <p class="poll-misc__info">Submitted on {{ pub_date }}</p>
+        <p class="poll-misc__info-muted">{{ poll.uuid }}</p>
+    </span>
 </div>
